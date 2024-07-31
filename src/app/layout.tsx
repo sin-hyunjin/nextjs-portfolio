@@ -21,7 +21,7 @@ export default function RootLayout({
           {/* 네비 게이션 */}
           <NavLink />
           {/* 콘텐츠 */}
-          <div className="w-full flex h-screen flex-col overflow-y-auto scrollbar-hide bg-white ">
+          <div className="w-full flex h-screen flex-col overflow-y-auto scrollbar-hide bg-white">
             {children}
           </div>
         </div>

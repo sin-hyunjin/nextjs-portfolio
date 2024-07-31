@@ -51,7 +51,6 @@ export default function NavLink() {
         <div className="flex justify-start items-center  text-lg font-semibold px-10">
           <Link href={links[0].href}>현진 포트폴리오</Link>
         </div>
-
         {/* Link 오른쪽 */}
         <div className="flex p-5 ">
           {/* 햄버거 버튼 (768px 이하 화면에서만 보임) */}
