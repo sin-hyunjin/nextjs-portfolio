@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { inter } from "@assets/fonts/fonts";
 import "@assets/css/globals.css";
 import "normalize.css"; // reset.css
-import NavLink from "@ui/home/NavLink";
+import NavLink from "@ui/root/NavLink";
+import DarkModeToggle from "./ui/DarkmodeToggle";
+import App from "./ui/Thema";
 
 export const metadata: Metadata = {
   title: "HJ Portfolio",
@@ -17,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="overflow-hidden">
-        <div className="w-full flex h-screen flex-col justify-center md:overflow-hidden   ">
+        <App />
+        <DarkModeToggle />
+        <div className="w-full dark:bg-black dark:text-white flex h-screen flex-col justify-center md:overflow-hidden">
           {/* 네비 게이션 */}
           <NavLink />
           {/* 콘텐츠 */}

@@ -1,10 +1,12 @@
 import "@assets/css/globals.css";
+import DarkModeToggle from "@ui/DarkmodeToggle";
 
 export default function Home() {
   return (
     <>
-      <div className="max-w-5xl  mx-auto">
-        <section id="home" className="min-h-screen bg-gray-100 p-10">
+      <div className="max-w-5xl mx-auto">
+        <DarkModeToggle />
+        <section id="home" className="min-h-screen  p-10">
           <div className="text-3xl font-bold">Home </div>
           <div>
             Welcome to the Home1232132 13211231 2321211232
@@ -13,7 +15,7 @@ export default function Home() {
           </div>
         </section>
         <section id="about" className="min-h-screen bg-gray-200 p-8">
-          <h2 className="text-3xl font-bold">About</h2>
+          <h2 className="text-base md:text-lg lg:text-xl font-bold">About</h2>
           <p>Information about us.</p>
         </section>
         <section id="project" className="min-h-screen bg-gray-300 p-8">

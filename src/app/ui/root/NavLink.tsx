@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import clsx from "clsx";
-
 import { useEffect, useState } from "react";
-
+import Image from "next/image";
+import github from "@assets/icons/github.svg";
 const links = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
@@ -13,42 +13,38 @@ const links = [
 ];
 
 export default function NavLink() {
+  //url(#)해쉬 설정
   const [hash, setHash] = useState<string>("");
   useEffect(() => {
     // 초기 해시 값 설정
     const updateHash = () => {
       setHash(window.location.hash);
     };
-    // 해시 변경 이벤트 리스너를 추가합니다
     window.addEventListener("hashchange", updateHash);
-    // 초기 해시 값 설정
     updateHash();
-
-    // 컴포넌트 언마운트 시 이벤트 리스너를 제거합니다
+    // 컴포넌트 언마운트 시 이벤트 리스너를 제거
     return () => {
       window.removeEventListener("hashchange", updateHash);
     };
   }, []);
 
   const handleLinkClick = (href: string) => {
-    // 클릭된 링크의 href에서 해시값을 추출하고 업데이트
-    const newHash = href;
-    setHash(newHash);
+    setHash(href);
     // 해시값을 실제로 URL에 적용
-    window.location.hash = newHash;
+    window.location.hash = href;
   };
 
+  // 햄버거 토글 버튼 설정
   const [meneToggle, setMenuToogle] = useState<boolean>(true);
   const handleClickMenuToggle = () => {
-    console.log(meneToggle);
     setMenuToogle(!meneToggle);
   };
 
   return (
-    <div className="  ">
-      <div className="flex justify-between  max-w-6xl mx-auto ">
+    <div>
+      <div className=" flex justify-between  max-w-5xl mx-auto  ">
         {/* 제목왼쪽 */}
-        <div className="flex justify-start items-center  text-lg font-semibold px-10">
+        <div className="flex justify-start items-center text-lg font-semibold px-10">
           <Link href={links[0].href}>현진 포트폴리오</Link>
         </div>
         {/* Link 오른쪽 */}
