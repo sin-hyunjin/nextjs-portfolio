@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { inter } from "@assets/fonts/fonts";
-import "@assets/css/globals.css";
+import "@/assets/css/globals.css";
 import "normalize.css"; // reset.css
-import NavLink from "@ui/root/NavLink";
-import DarkModeToggle from "./ui/DarkmodeToggle";
-import App from "./ui/Thema";
+import MainNav from "@/components/main-nav";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "HJ Portfolio",
@@ -17,18 +15,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className="overflow-hidden">
-        <App />
-        <DarkModeToggle />
-        <div className="w-full dark:bg-black dark:text-white flex h-screen flex-col justify-center md:overflow-hidden">
+    <html lang="ko" suppressHydrationWarning>
+      <body className="w-full flex h-screen flex-col justify-center">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {/* 네비 게이션 */}
-          <NavLink />
+          <MainNav />
           {/* 콘텐츠 */}
-          <div className="w-full flex h-screen flex-col overflow-y-auto scrollbar-hide bg-white">
+          <div className="w-full flex h-screen flex-col overflow-y-auto scrollbar-hide ">
             {children}
           </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );
