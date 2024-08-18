@@ -10,7 +10,7 @@
 
 ## Icon
 
-- lucide-react
+- lucide-react : https://lucide.dev/icons/monitor-cog
 
 ## 다크 모드
 

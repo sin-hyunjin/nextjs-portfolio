@@ -16,10 +16,16 @@ const config: Config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        sm: "480px",
+        md: "768px",
+        lg: "976px",
+        xl: "1440px",
       },
     },
     extend: {
+      boxShadow: {
+        "b-shadow": "0 0px 3px var(--shadow)",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
