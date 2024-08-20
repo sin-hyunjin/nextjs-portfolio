@@ -29,7 +29,6 @@ export default function RootLayout({
           {/* 네비 게이션 */}
           <MainNav />
           {/* 콘텐츠 */}
-
           {children}
         </ThemeProvider>
       </body>

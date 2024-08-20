@@ -23,6 +23,9 @@ const config: Config = {
       },
     },
     extend: {
+      fontSize: {
+        tiny: "0.7rem", // 커스텀 텍스트 크기 추가
+      },
       boxShadow: {
         "b-shadow": "0 0px 3px var(--shadow)",
       },

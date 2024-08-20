@@ -29,9 +29,10 @@ const useScrollManager = () => {
 
     // Intersection Observer 설정
     const sections = document.querySelectorAll("section");
+
     const observerOptions = {
       root: null,
-      rootMargin: "0px 0px -20% 0px", // 하단 마진을 조금 줄여서 감지 영역 확장
+      rootMargin: "0px 0px -30% 0px", // 하단 마진을 조금 줄여서 감지 영역 확장
       threshold: 0.4, // 섹션이 40% 보일 때를 기준으로 설정
     };
 
@@ -53,6 +54,7 @@ const useScrollManager = () => {
       observerCallback,
       observerOptions
     );
+
     sections.forEach((section) => observer.observe(section));
 
     // `popstate` 이벤트 리스너 추가

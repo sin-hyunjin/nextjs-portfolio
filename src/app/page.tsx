@@ -6,7 +6,6 @@ import { ArrowBigDownDash } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 import Link from "next/link";
 import Introduce from "@/components/section-about/introduce";
-
 export default function Page() {
   return (
     <main className="w-full flex h-screen  flex-col  scrollbar-hide">
@@ -16,10 +15,10 @@ export default function Page() {
         {/* section-about */}
         <section
           id="about"
-          className="flex flex-col px-10 justify-around min-h-screen scroll-mt-20 border-b-2 border-b-foreground/10"
+          className="flex flex-col px-10 justify-around min-h-screen scroll-mt-20 "
         >
           {/* 제목 */}
-          <div className="flex justify-end">
+          <div className="flex justify-end border-t-2 border-t-foreground/10">
             <h1
               className={`font-bold text-foreground/80 text-5xl tracking-tighter md:text-7xl sm:text-6xl`}
             >
@@ -46,9 +45,9 @@ export default function Page() {
         </section>
 
         {/* section-project */}
-        <section id="project" className="min-h-screen  p-8 scroll-mt-20">
+        <section id="project" className="min-h-screen p-8 scroll-mt-20">
           {/* 제목 */}
-          <div className="flex justify-start">
+          <div className="flex justify-start border-t-2 border-t-foreground/10">
             <h1
               className={`font-bold text-foreground/80 text-5xl tracking-tighter md:text-7xl sm:text-6xl`}
             >

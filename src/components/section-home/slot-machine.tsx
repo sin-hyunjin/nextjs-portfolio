@@ -58,7 +58,7 @@ const SlotMachine = ({ textData }: Props) => {
   }
 
   return (
-    <div className="flex justify-between max-w-lg ">
+    <div className="flex max-w-lg ">
       <AnimatePresence mode="popLayout">
         {textArr.map((text, i) => {
           const isLast = i === lastIndex;
@@ -66,7 +66,7 @@ const SlotMachine = ({ textData }: Props) => {
           return (
             i === currentIndex && (
               <motion.p
-                className="min-w-[24rem] text-xl p-1 mr-2 rounded-md bg-foreground/5 verflow-hidden font-thin md:text-3xl md:min-w-[36rem] sm:text-2xl sm:min-w-[30rem]"
+                className="min-w-[23rem] text-xl p-1 mr-2 rounded-md bg-foreground/5 verflow-hidden font-thin md:text-3xl md:min-w-[36rem] sm:text-2xl sm:min-w-[30rem]"
                 key={text}
                 custom={{ isLast }}
                 variants={variants}
