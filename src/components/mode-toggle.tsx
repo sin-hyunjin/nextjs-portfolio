@@ -15,7 +15,7 @@ import {
 export function ModeToggle() {
   const { setTheme } = useTheme();
   const theme = localStorage.getItem("theme");
-  console.log(localStorage.getItem("theme"));
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

@@ -1,11 +1,22 @@
-import { Button } from "@/components/ui/button";
+"use client";
 
-export default function User() {
+import { useScroll, useMotionValueEvent } from "framer-motion";
+import { useEffect } from "react";
+
+export default function ScrollLogger() {
+  const { scrollY } = useScroll();
+
+  // useMotionValueEvent를 사용하여 스크롤 위치의 변화를 감지
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    console.log("Page scroll: ", latest);
+  });
+
   return (
-    <div className="mt-16">
-      <h1>유저 페이지</h1>
-      <div>
-        <Button>클릭</Button>
+    <div>
+      <h1>Scroll Logger</h1>
+      <p>Scroll down to see the log in the console.</p>
+      <div style={{ height: "2000px" }}>
+        {/* Dummy content to allow scrolling */}
       </div>
     </div>
   );

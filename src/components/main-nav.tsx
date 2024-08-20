@@ -6,7 +6,7 @@ import Link from "next/link";
 import GithubIcon from "@/assets/icons/github-icon";
 import { ModeToggle } from "./mode-toggle";
 import { cn } from "@/lib/utils";
-import useScrollManager from "@/lib/use-scroll-manager"; // 훅을 임포트합니다.
+import useScrollManager from "@/lib/use-scroll-manager";
 
 const links = [
   { name: "Home", href: "#home" },

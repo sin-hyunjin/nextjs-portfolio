@@ -4,13 +4,19 @@
 - typescript :
 - clsx :
 
-- library:
+## library:
 
-  - shadcn/ui : https://ui.shadcn.com/docs/installation/next
+#### 다크모드 및 ui
 
-## Icon
+- shadcn/ui : https://ui.shadcn.com/docs/installation/next
+
+#### Icon
 
 - lucide-react : https://lucide.dev/icons/monitor-cog
+
+#### 애니메이션
+
+- framer-motion : https://www.framer.com/motion/
 
 ## 다크 모드
 

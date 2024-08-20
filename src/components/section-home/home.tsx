@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="flex flex-col justify-between min-h-[40rem] p-10 scroll-mt-16 border-b-2 border-b-foreground/10"
+      className="flex flex-col justify-between min-h-screen p-10 scroll-mt-16 border-b-2 border-b-foreground/10"
     >
       <div>
         <h1
