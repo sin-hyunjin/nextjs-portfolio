@@ -68,9 +68,9 @@ const useScrollManager = () => {
 
   const handleLinkClick = (
     href: string,
-    event: React.MouseEvent<HTMLAnchorElement>
+    event?: React.MouseEvent<HTMLAnchorElement>
   ) => {
-    event.preventDefault(); // 기본 링크 동작 방지
+    event?.preventDefault(); // 기본 링크 동작 방지
     setHash(href);
     window.history.pushState(null, "", href); // URL의 해시를 업데이트
     localStorage.setItem("currentHash", href); // 해시값 저장

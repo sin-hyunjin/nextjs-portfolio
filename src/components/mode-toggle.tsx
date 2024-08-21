@@ -13,8 +13,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
-  const theme = localStorage.getItem("theme");
+  const { setTheme, theme } = useTheme();
+  const [currentTheme, setCurrentTheme] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    // 클라이언트 사이드에서 theme 초기화
+    setCurrentTheme(theme || "light");
+  }, [theme]);
 
   return (
     <DropdownMenu>
@@ -23,28 +28,28 @@ export function ModeToggle() {
           <Sun
             className={cn(
               "h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 group-hover:stroke-foreground",
-              { "stroke-sky-500": theme === "light" }
+              { "stroke-sky-500": currentTheme === "light" }
             )}
           />
 
           <MoonStar
             className={cn(
               "absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 group-hover:stroke-foreground",
-              { "stroke-sky-500": theme === "dark" }
+              { "stroke-sky-500": currentTheme === "dark" }
             )}
           />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="z-50 rounded-xl bg-background "
+        className="z-50 rounded-xl bg-background"
         align="end"
       >
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          <Sun className="p-1 mr-1"></Sun> Light
+          <Sun className="p-1 mr-1" /> Light
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <Moon className="p-1 mr-1"></Moon> Dark
+          <Moon className="p-1 mr-1" /> Dark
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <MonitorCog className="p-1 mr-1" /> System

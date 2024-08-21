@@ -16,20 +16,33 @@ const links = [
 ];
 
 export default function MainNav() {
-  const { handleLinkClick } = useScrollManager(); // 훅을 사용
+  const { hash, handleLinkClick } = useScrollManager(); // 훅을 사용
   const [menuToggle, setMenuToggle] = useState<boolean>(true);
-  const sectionLog = localStorage.getItem("currentHash");
   const handleClickMenuToggle = () => {
     setMenuToggle(!menuToggle);
   };
+  // function hash {
+  //   if (typeof window !== "undefined") {
+  //     // 로컬 스토리지에서 currentHash 값을 가져오고 반환
+  //     return localStorage.getItem("currentHash");
+  //   }
+  //   // 브라우저 환경이 아닌 경우에 대한 fallback
+  //   return null;
+  // }
 
   return (
     <>
+      {/* Main Nav */}
       <header className="fixed top-0 left-0 w-full z-50 bg-background/95 border-border backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b-0 shadow-b-shadow">
         <div className="flex justify-between max-w-5xl mx-auto">
           {/* 제목왼쪽 */}
           <div className="flex justify-start items-center text-lg font-semibold px-10">
-            <Link href={links[0].href}>현진 포트폴리오</Link>
+            <Link
+              href={links[0].href}
+              onClick={(e) => handleLinkClick(links[0].href, e)}
+            >
+              현진 포트폴리오
+            </Link>
           </div>
           {/* Link 오른쪽 */}
           <div className="flex p-5">
@@ -51,7 +64,7 @@ export default function MainNav() {
                   className={cn(
                     "flex h-[48px] items-center justify-center gap-2 p-3 text-sm font-medium text-foreground/60 hover:text-foreground/85",
                     {
-                      "text-foreground": sectionLog === link.href,
+                      "text-foreground": hash === link.href,
                     }
                   )}
                 >
@@ -87,7 +100,7 @@ export default function MainNav() {
               className={cn(
                 "flex h-[48px] items-center justify-center gap-2 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600",
                 {
-                  "bg-sky-100 text-blue-600": sectionLog === link.href,
+                  "bg-sky-100 text-blue-600": hash === link.href,
                 }
               )}
             >
@@ -96,6 +109,8 @@ export default function MainNav() {
           ))}
         </div>
       </header>
+
+      {/* subNav */}
       <div className="fixed w-30 right-0 top-1/2 pr-3 transform -translate-y-1/2 flex flex-col justify-center space-y-1">
         {links.map((link) => (
           <div key={link.name} className="flex justify-end group">
@@ -111,9 +126,9 @@ export default function MainNav() {
                 className={cn(
                   " bg-foreground/80 rounded-full transition-all duration-100 ",
                   {
-                    "w-2.5 h-2.5": sectionLog === link.href,
+                    "w-2.5 h-2.5": hash === link.href,
                     "w-1 h-1 group-hover:w-2 group-hover:h-2":
-                      sectionLog !== link.href,
+                      hash !== link.href,
                   }
                 )}
               ></div>
