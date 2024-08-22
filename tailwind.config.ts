@@ -40,6 +40,11 @@ const config: Config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        badge1: "hsl(var(--badge-1))",
+        badge2: "hsl(var(--badge-2))",
+        badge3: "hsl(var(--badge-3))",
+        badge4: "hsl(var(--badge-4))",
+        badge5: "hsl(var(--badge-5))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
