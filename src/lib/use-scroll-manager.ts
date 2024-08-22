@@ -24,16 +24,19 @@ const useScrollManager = () => {
     }
 
     // 해시값 복원
-    window.location.hash = savedHash;
-    handleHashChange();
+    setTimeout(() => {
+      window.location.hash = savedHash;
+      handleHashChange();
+    }, 0); // 스크롤 위치 보정을 위한 딜레이
 
     // Intersection Observer 설정
     const sections = document.querySelectorAll("section");
 
     const observerOptions = {
       root: null,
-      rootMargin: "0px 0px -30% 0px", // 하단 마진을 조금 줄여서 감지 영역 확장
-      threshold: 0.4, // 섹션이 40% 보일 때를 기준으로 설정
+      // 높이가 큰 섹션을 고려한 해시 처리
+      rootMargin: "-30% 0px -70% 0px", // 상단 마진을 조정하여 감지
+      threshold: [0, 0.25, 0.5, 0.75, 1.0], // 다양한 threshold 설정
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -56,6 +59,16 @@ const useScrollManager = () => {
     );
 
     sections.forEach((section) => observer.observe(section));
+    // Mutation Observer 설정 (섹션의 높이가 변경될 때 감지)
+    const mutationObserver = new MutationObserver(() => {
+      sections.forEach((section) => observer.observe(section));
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+    });
 
     // `popstate` 이벤트 리스너 추가
     window.addEventListener("popstate", handleHashChange);
