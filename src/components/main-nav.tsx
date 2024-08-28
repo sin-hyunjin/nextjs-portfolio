@@ -71,21 +71,23 @@ export default function MainNav() {
                   <p>{link.name}</p>
                 </Link>
               ))}
-              <div className="flex h-[48px] items-center justify-center gap-1 p-3 text-sm font-medium">
-                {"|"}
+              <div className="flex h-[48px] items-center justify-center  p-3 text-sm font-medium">
+                <div className="mr-1 opacity-40">{"|"}</div>
                 <ModeToggle />
                 <Link href="#">
-                  <GithubIcon
-                    className="fill-foreground/60 hover:fill-foreground"
-                    width={24}
-                    height={24}
-                  />
+                  <div className="hover:bg-foreground/10 rounded-full p-1">
+                    <GithubIcon
+                      className="fill-foreground/60 hover:fill-foreground "
+                      width={24}
+                      height={24}
+                    />
+                  </div>
                 </Link>
               </div>
             </div>
           </div>
         </div>
-        {/* (768px 이상 화면에서 메뉴버튼 활성화 할 시 보임) */}
+        {/* (768px 이하 화면에서 메뉴버튼 활성화 할 시 보임) */}
         <div
           className={cn("w-full md:hidden", {
             block: !menuToggle, // menuToggle이 true일 때 "block" 클래스를 적용
@@ -98,15 +100,25 @@ export default function MainNav() {
               href={link.href}
               onClick={(e) => handleLinkClick(link.href, e)}
               className={cn(
-                "flex h-[48px] items-center justify-center gap-2 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600",
+                "flex h-[48px] items-center justify-center gap-2 p-3 text-sm font-medium hover:bg-foreground/10 hover:text-foreground",
                 {
-                  "bg-sky-100 text-blue-600": hash === link.href,
+                  "bg-foreground/90 text-background": hash === link.href,
                 }
               )}
             >
               <p>{link.name}</p>
             </Link>
           ))}
+          <div className="flex  items-center justify-center ">
+            <div>
+              {" "}
+              <ModeToggle />
+            </div>
+
+            <div className="m-4 hover:bg-foreground/10 p-1 rounded-full">
+              <GithubIcon />
+            </div>
+          </div>
         </div>
       </header>
 
