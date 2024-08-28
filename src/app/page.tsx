@@ -6,7 +6,7 @@ import { CardWithForm } from "@/components/section-contact/card";
 import TypingText from "@/components/section-contact/typing-text";
 
 import Home from "@/components/section-home/home";
-import Project from "@/components/section-porject/project";
+import Project from "@/components/section-project/project";
 import useScrollManager from "@/lib/use-scroll-manager";
 import { useCallback, useEffect, useState } from "react";
 
