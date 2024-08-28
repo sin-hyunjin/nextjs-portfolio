@@ -15,7 +15,7 @@ export default function Introduce() {
   // Spring으로 부드럽게 애니메이션
   const x = useSpring(xRange, { stiffness: 100, damping: 30 });
   return (
-    <div className="shadow-sm p-12 mb-16 rounded-lg md:mb-24">
+    <div className="shadow-sm shadow-foreground/10 p-12 mb-16 rounded-lg md:mb-24">
       <h1 className="inline font-bold text-foreground/80 text-xl tracking-tighter md:text-2xl">
         Introduce
       </h1>
