@@ -60,7 +60,7 @@ export default function Page() {
               이런 저의 성장 가능성을 믿고 이끌어 줄 회사를 찾고 있습니다.
             </p>
           </div>
-          <div className="w-full h-1 border shadow-xl"></div>
+          <div className="w-full h-1 border border-foreground/10 shadow-xl"></div>
           {/* 카드  */}
           <div className="relative flex flex-col md:flex-row w-full p-10 mt-10 rounded-lg  ">
             {/* Left Section */}
