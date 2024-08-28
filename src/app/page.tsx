@@ -3,16 +3,12 @@
 import GithubIcon from "@/assets/icons/github-icon";
 import About from "@/components/section-about/about";
 import { CardWithForm } from "@/components/section-contact/card";
-import TypingText from "@/components/section-contact/typing-text";
 
 import Home from "@/components/section-home/home";
 import Project from "@/components/section-project/project";
 import useScrollManager from "@/lib/use-scroll-manager";
-import { useCallback, useEffect, useState } from "react";
 
 export default function Page() {
-  const { hash } = useScrollManager(); // 훅을 사용
-
   return (
     <main className="w-full flex h-screen  flex-col  scrollbar-hide">
       <div className="w-full flex-1 mt-10 max-w-5xl mx-auto">
@@ -40,7 +36,8 @@ export default function Page() {
           {/* 나의 생각 */}
           <div className="mb-20 flex flex-col  gap-4 max-w-3xl p-10">
             <span className="text-base md:text-lg text-foreground leading-relaxed">
-              "어떻게 하면 사용자가 더 쓰기 편한 서비스를 만들 수 있을까?"{" "}
+              &quot;어떻게 하면 사용자가 더 쓰기 편한 서비스를 만들 수
+              있을까?&quot;
             </span>
 
             <p className="text-xs md:text-sm text-foreground/70 leading-relaxed">
@@ -101,7 +98,6 @@ export default function Page() {
         </section>
         <footer className="flex flex-col items-center p-16">
           <div className="text-xs md:text-sm text-foreground/70 leading-relaxed">
-            {" "}
             Copyright 2024. HYUNJIN All rights reserved.
           </div>
           <div className="flex mt-2 p-1 text-sm md:text-base text-foreground/70 leading-relaxed">
