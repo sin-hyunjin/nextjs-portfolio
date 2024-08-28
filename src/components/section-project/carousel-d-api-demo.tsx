@@ -56,14 +56,14 @@ export function CarouselDApiDemo() {
           <div
             key={index}
             className={cn("flex p-2", {
-              "w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/4": collet,
-              "mx-5": !collet,
+              "w-[22rem] sm:w-1/2 md:w-1/3 lg:w-1/4": collet,
+              "w-full mx-5": !collet,
             })}
           >
             <Card
               className={cn("p-2 shadow-lg group flex flex-col", {
                 "w-full ": collet,
-                "w-2/5 mr-4 h-72 md:h-full ": !collet,
+                "w-[22rem] sm:w-2/5 mr-4 h-96 md:h-full sm:h-72": !collet,
               })}
             >
               <CardHeader
@@ -133,8 +133,8 @@ export function CarouselDApiDemo() {
             </Card>
             {/* 오른쪽 카드 콘텐츠  */}
             {!collet && (
-              <div className="flex flex-col">
-                <Card className=" flex flex-col  flex-1  ml-4 shadow-lg">
+              <div className="hidden flex-col sm:flex">
+                <Card className=" flex  flex-col  flex-1  ml-4 shadow-lg">
                   <CardHeader>
                     <CardTitle className="text-base md:text-xl">
                       {content.subtitle}
