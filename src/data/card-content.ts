@@ -9,6 +9,7 @@ import NDB from "@/assets/icons/NDB.png";
 import portfolio from "@/assets/icons/portfolio.svg";
 import portfolioIcon from "@/assets/icons/resume-and-cv.png";
 import ReactVue from "@/assets/icons/react-vue.svg";
+
 export const cardContents: CardContent[] = [
   {
     title: "Portfoilo",
@@ -25,10 +26,15 @@ export const cardContents: CardContent[] = [
       "Custom Hook을 사용한 hash 기반의 페이지 스크롤 관리",
     ],
     card: [
-      { src: "#", msg: "home" },
-      { src: "#project", msg: "github" },
+      { src: "https://shj-portfolio.vercel.app/", msg: "home" },
+      { src: "https://github.com/sin-hyunjin/nextjs-portfolio", msg: "github" },
     ],
-    leftURL: [{ home: "#", code: "#" }],
+    leftURL: [
+      {
+        home: "https://shj-portfolio.vercel.app/",
+        code: "https://github.com/sin-hyunjin/nextjs-portfolio",
+      },
+    ],
   },
   {
     title: "Cukapoka",
@@ -53,13 +59,13 @@ export const cardContents: CardContent[] = [
     ],
     card: [
       { src: "#", msg: "home" },
-      { src: "#project", msg: "github" },
+      { src: "https://github.com/Chukapoka", msg: "github" },
       {
         src: "https://www.figma.com/design/6Tu7H514UE9JcZyPffyKjw/20231222_CHUKAPOKA?node-id=16-766&t=FQXtS8SdmNU5HLrB-1",
         msg: "figma",
       },
     ],
-    leftURL: [{ home: "#", code: "#" }],
+    leftURL: [{ home: "#", code: "https://github.com/Chukapoka" }],
   },
   {
     title: "감기",
@@ -85,14 +91,19 @@ export const cardContents: CardContent[] = [
       "최근 일기 기록 목록리스트 페이지 ",
     ],
     card: [
-      { src: "#", msg: "home" },
+      { src: "https://diary-feelings.vercel.app/", msg: "home" },
       { src: "https://github.com/JS-A-CoreProject", msg: "github" },
       {
         src: "https://www.figma.com/design/BJDk4xSL2vRA6EzlMn618t/%EC%8B%A4%EC%A0%84%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?node-id=5-438&t=EeGEilf3xREagSBN-1",
         msg: "figma",
       },
     ],
-    leftURL: [{ home: "#", code: "#" }],
+    leftURL: [
+      {
+        home: "https://diary-feelings.vercel.app/",
+        code: "https://github.com/sin-hyunjin/DiaryFeelings",
+      },
+    ],
   },
   {
     title: "NDB",
