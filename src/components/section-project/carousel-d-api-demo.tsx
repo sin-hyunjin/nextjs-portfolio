@@ -18,7 +18,7 @@ import Image from "next/image";
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { cardContents } from "@/data/card-content";
+import { CardContents } from "@/data/card-content";
 import BadgeList from "../ui/badge-list";
 import GithubIcon from "@/assets/icons/github-icon";
 import FigmaIcon from "@/assets/icons/figma-icon";
@@ -52,7 +52,7 @@ export function CarouselDApiDemo() {
         </button>
       </div>
       <div className="flex flex-row flex-wrap p-5">
-        {cardContents.map((content, index) => (
+        {CardContents.map((content, index) => (
           <div
             key={index}
             className={cn("flex p-2", {
