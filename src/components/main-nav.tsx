@@ -74,7 +74,7 @@ export default function MainNav() {
               <div className="flex h-[48px] items-center justify-center  p-3 text-sm font-medium">
                 <div className="mr-1 opacity-40">{"|"}</div>
                 <ModeToggle />
-                <Link href="#">
+                <Link href="https://github.com/sin-hyunjin">
                   <div className="hover:bg-foreground/10 rounded-full p-1">
                     <GithubIcon
                       className="fill-foreground/60 hover:fill-foreground "
@@ -114,10 +114,11 @@ export default function MainNav() {
               {" "}
               <ModeToggle />
             </div>
-
-            <div className="m-4 hover:bg-foreground/10 p-1 rounded-full">
-              <GithubIcon />
-            </div>
+            <Link href="https://github.com/sin-hyunjin">
+              <div className="m-4 hover:bg-foreground/10 p-1 rounded-full">
+                <GithubIcon />
+              </div>
+            </Link>
           </div>
         </div>
       </header>
