@@ -10,7 +10,7 @@ import portfolio from "@/assets/icons/portfolio.svg";
 import portfolioIcon from "@/assets/icons/resume-and-cv.png";
 import ReactVue from "@/assets/icons/react-vue.svg";
 
-export const cardContents: CardContent[] = [
+export const CardContents: CardContent[] = [
   {
     title: "Portfoilo",
     subtitle: "개인 포트폴리오",
@@ -58,14 +58,19 @@ export const cardContents: CardContent[] = [
       "이메일을 통한 인증코드 전송 기능",
     ],
     card: [
-      { src: "#", msg: "home" },
+      { src: "https://chkapoka-client.vercel.app/", msg: "home" },
       { src: "https://github.com/Chukapoka", msg: "github" },
       {
         src: "https://www.figma.com/design/6Tu7H514UE9JcZyPffyKjw/20231222_CHUKAPOKA?node-id=16-766&t=FQXtS8SdmNU5HLrB-1",
         msg: "figma",
       },
     ],
-    leftURL: [{ home: "#", code: "https://github.com/Chukapoka" }],
+    leftURL: [
+      {
+        home: "https://chkapoka-client.vercel.app/",
+        code: "https://github.com/Chukapoka",
+      },
+    ],
   },
   {
     title: "감기",
