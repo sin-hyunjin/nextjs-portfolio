@@ -7,6 +7,7 @@ import { CardWithForm } from "@/components/section-contact/card";
 import Home from "@/components/section-home/home";
 import Project from "@/components/section-project/project";
 import useScrollManager from "@/lib/use-scroll-manager";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -101,7 +102,9 @@ export default function Page() {
             Copyright 2024. HYUNJIN All rights reserved.
           </div>
           <div className="flex mt-2 p-1 text-sm md:text-base text-foreground/70 leading-relaxed">
-            <GithubIcon className="p-1"></GithubIcon> <p>GitHub/portfolio</p>
+            <Link href="https://github.com/sin-hyunjin" className="flex">
+              <GithubIcon className="p-1"></GithubIcon> <p>GitHub/portfolio</p>
+            </Link>
           </div>
         </footer>
       </div>
