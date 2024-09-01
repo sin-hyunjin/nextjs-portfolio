@@ -31,19 +31,21 @@ export function CarouselDApiDemo() {
 
   const handleButtonClickCollte = () => {
     setCollect(!collet);
-    console.log(collet);
   };
-
-  const chuka = "Cukapoka 이미지";
 
   return (
     <>
-      <div className="flex w-full justify-end">
-        {/* 전체보기 / 간추려서보기 */}
-        <button
-          className="mr-12 border border-foreground/20 hover:border-foreground/40 p-1 rounded-md group"
-          onClick={handleButtonClickCollte}
-        >
+      {/* 전체보기 / 간추려서보기 */}
+      <div
+        className="mr-10 w-full flex justify-end group"
+        onClick={handleButtonClickCollte}
+      >
+        <div className="mr-2 flex items-end text-[11px] md:text-[12px] text-foreground/80 leading-relaxed cursor-pointer">
+          <div className="group-hover:text-foreground border-x-2 border-foreground/10 p-1">
+            {collet ? "전체 보기" : "간단히 보기"}
+          </div>
+        </div>
+        <button className=" border border-foreground/20 group-hover:border-foreground/40 p-1 rounded-md ">
           {collet ? (
             <BetweenHorizontalStart className="stroke-foreground/50 group-hover:stroke-foreground" />
           ) : (
@@ -51,7 +53,12 @@ export function CarouselDApiDemo() {
           )}
         </button>
       </div>
-      <div className="flex flex-row flex-wrap p-5">
+      <div
+        className={cn("flex flex-row flex-wrap", {
+          "p-4": collet,
+          "-p-1": !collet,
+        })}
+      >
         {CardContents.map((content, index) => (
           <div
             key={index}
@@ -187,9 +194,12 @@ export function CarouselDApiDemo() {
                           </Link>
                         )}
 
-                        <div className="hidden text-xs text-center transform scale-75 opacity-0 translate-y-2 group-hover:block group-hover:scale-100 group-hover:opacity-100 group-hover:translate-y-0 group-hover:text-blue-400 transition-all duration-300 ease-in-out">
+                        <Link
+                          href={item.src}
+                          className="hidden text-xs text-center transform scale-75 opacity-0 translate-y-2 group-hover:block group-hover:scale-100 group-hover:opacity-100 group-hover:translate-y-0 group-hover:text-blue-400 transition-all duration-300 ease-in-out"
+                        >
                           {item.msg}
-                        </div>
+                        </Link>
                       </div>
                     </div>
                   ))}

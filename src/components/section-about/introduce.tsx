@@ -1,13 +1,7 @@
 "use client";
 import hp2 from "@/assets/icons/hp2.jpeg";
 import Image from "next/image";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  useSpring,
-} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 export default function Introduce() {
   const { scrollY } = useScroll();
   const xRange = useTransform(scrollY, [330, 600], [0.1, 1]);
@@ -30,7 +24,6 @@ export default function Introduce() {
           className="flex-shrink-0 mb-6 md:mb-0 md:mr-8"
         >
           <div className="rounded-full relative overflow-hidden shadow-md">
-            {/* <SquareDashedBottomCode className="object-cover w-40 h-40 md:w-48 md:h-48"></SquareDashedBottomCode> */}
             <Image
               src={hp2}
               alt="공부"
@@ -67,8 +60,7 @@ export default function Introduce() {
 
             <li className="flex">
               <span className=" border-b pb-4">
-                {" "}
-                함수형 패러다임과 그 기반 이론에 흥미를 가지고 있습니다.
+                stackoverflow를 통해 문제해결이 가능합니다.
               </span>
             </li>
           </ol>

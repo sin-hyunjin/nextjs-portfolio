@@ -49,7 +49,7 @@ export default function Stacks() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { scrollY } = useScroll();
-  const yRange = useTransform(scrollY, [830, 1000], [0.1, 1]); // 스크롤 범위와 변환 범위를 조정합니다.
+  const yRange = useTransform(scrollY, [830, 1000], [0.1, 1]); // 스크롤 범위와 변환 범위를 조정
   // 스크롤 위치에 따라 x축 변환 값 생성
   const xLeftRange = useTransform(scrollY, [500, 1100], [-100, 0]);
   const xRightRange = useTransform(scrollY, [900, 1100], [100, 0]);
@@ -117,7 +117,8 @@ export default function Stacks() {
             {/* 이미지 */}
             <div className="hidden items-center  md:flex my-4 ">
               <Image
-                className="w-60 "
+                className="w-60 cursor-pointer rounded-full hover:bg-foreground/5"
+                onClick={handleButtonClick}
                 src={isMoreSkills ? StackMoreIcon : StackCoreIcon}
                 alt=""
               ></Image>
@@ -155,9 +156,10 @@ export default function Stacks() {
       ) : (
         <div className=" flex items-center justify-center my-5 md:hidden">
           <Image
-            className="w-60"
+            className="w-60 cursor-pointer rounded-full hover:bg-foreground/5"
+            onClick={handleButtonClick}
             src={isMoreSkills ? StackMoreIcon : StackCoreIcon}
-            alt=""
+            alt="skills image"
           ></Image>
         </div>
       )}

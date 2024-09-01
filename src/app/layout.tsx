@@ -4,6 +4,7 @@ import "normalize.css"; // reset.css
 import MainNav from "@/components/main-nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { poppins } from "@/assets/fonts/fonts";
+import Motion from "../components/scroll-motion";
 
 export const metadata: Metadata = {
   title: "HJ Portfolio",
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko">
       <body
         className={`${poppins.className} w-full flex h-screen flex-col justify-center`}
       >
@@ -28,6 +29,7 @@ export default function RootLayout({
         >
           {/* 네비 게이션 */}
           <MainNav />
+
           {/* 콘텐츠 */}
           {children}
         </ThemeProvider>

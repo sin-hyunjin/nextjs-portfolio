@@ -7,7 +7,7 @@ export default function Project() {
   return (
     <section
       id="project"
-      className="flex flex-col min-h-screen p-8 justify-between scroll-mt-20"
+      className="flex flex-col min-h-screen p-8 justify-between scroll-mt-14"
     >
       {/* 제목 */}
       <div className="flex justify-start border-t-2 border-t-foreground/10">
@@ -22,7 +22,6 @@ export default function Project() {
       </div>
       <div className="flex flex-col justify-center items-center">
         {/* carousel */}
-
         <CarouselDApiDemo />
       </div>
       <div className="flex justify-center items-center mt-20">

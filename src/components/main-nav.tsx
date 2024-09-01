@@ -6,34 +6,28 @@ import Link from "next/link";
 import GithubIcon from "@/assets/icons/github-icon";
 import { ModeToggle } from "./mode-toggle";
 import { cn } from "@/lib/utils";
-import useScrollManager from "@/lib/use-scroll-manager";
+import useScrollManager from "@/hooks/use-scroll-manager";
+import ScrollMotion from "@/components/scroll-motion";
 
 const links = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Project", href: "#project" },
-  { name: "Constant", href: "#constant" },
+  { name: "HOME", href: "#home" },
+  { name: "ABOUT", href: "#about" },
+  { name: "PROJECT", href: "#project" },
+  { name: "CONSTANT", href: "#constant" },
 ];
 
 export default function MainNav() {
-  const { hash, handleLinkClick } = useScrollManager(); // 훅을 사용
+  const { hash, handleLinkClick } = useScrollManager();
   const [menuToggle, setMenuToggle] = useState<boolean>(true);
   const handleClickMenuToggle = () => {
     setMenuToggle(!menuToggle);
   };
-  // function hash {
-  //   if (typeof window !== "undefined") {
-  //     // 로컬 스토리지에서 currentHash 값을 가져오고 반환
-  //     return localStorage.getItem("currentHash");
-  //   }
-  //   // 브라우저 환경이 아닌 경우에 대한 fallback
-  //   return null;
-  // }
 
   return (
     <>
       {/* Main Nav */}
       <header className="fixed top-0 left-0 w-full z-50 bg-background/95 border-border backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b-0 shadow-b-shadow">
+        <ScrollMotion />
         <div className="flex justify-between max-w-5xl mx-auto">
           {/* 제목왼쪽 */}
           <div className="flex justify-start items-center text-lg font-semibold px-10">

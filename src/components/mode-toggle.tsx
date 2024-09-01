@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { MonitorCog, Moon, MoonStar, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -11,12 +10,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
-  const [currentTheme, setCurrentTheme] = React.useState<string | null>(null);
+  const [currentTheme, setCurrentTheme] = useState<string | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // 클라이언트 사이드에서 theme 초기화
     setCurrentTheme(theme || "light");
   }, [theme]);
