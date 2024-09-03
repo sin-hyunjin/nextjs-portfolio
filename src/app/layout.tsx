@@ -17,9 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <body
         className={`${poppins.className} w-full flex h-screen flex-col justify-center`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
