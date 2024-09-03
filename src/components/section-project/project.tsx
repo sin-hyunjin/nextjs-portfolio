@@ -25,7 +25,7 @@ export default function Project() {
         <CarouselDApiDemo />
       </div>
       <div className="flex justify-center items-center mt-20">
-        <Link href="#about" onClick={(e) => scrollToSection(e, "#about")}>
+        <Link href="#constant" onClick={(e) => scrollToSection(e, "#about")}>
           {" "}
           <ArrowBigDownDash className="arrow" />
         </Link>

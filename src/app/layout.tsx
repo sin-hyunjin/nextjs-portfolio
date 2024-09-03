@@ -4,7 +4,6 @@ import "normalize.css"; // reset.css
 import MainNav from "@/components/main-nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { poppins } from "@/assets/fonts/fonts";
-import Motion from "../components/scroll-motion";
 
 export const metadata: Metadata = {
   title: "HJ Portfolio",
