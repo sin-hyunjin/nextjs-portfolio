@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { CardWithForm } from "./card-with-form";
+
 import GithubIcon from "@/assets/icons/github-icon";
+import MessageWithForm from "./message-with-form";
 
 export default function Constant() {
   return (
@@ -82,7 +83,7 @@ export default function Constant() {
         </div>
         {/* Right Section with Form */}
         <div className="flex-1 w-full md:w-2/3 ml-0 md:ml-8">
-          <CardWithForm />
+          <MessageWithForm />
         </div>
       </div>
     </section>

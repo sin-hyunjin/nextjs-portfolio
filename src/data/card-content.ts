@@ -1,5 +1,5 @@
 // src/data/
-import { CardContent } from "@/types/index";
+import { CardContent } from "@/types/card-type";
 
 import chukapoka from "@/assets/icons/chukapoka.png";
 import chukapokaIcon from "@/assets/icons/chukapoka-icon.png";

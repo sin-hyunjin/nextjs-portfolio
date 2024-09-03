@@ -7,13 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  BetweenHorizontalEnd,
-  CodeXml,
-  TvMinimal,
-  BetweenHorizontalStart,
-  House,
-} from "lucide-react";
+import { CodeXml, TvMinimal, House } from "lucide-react";
 import Image from "next/image";
 
 import { useState } from "react";
@@ -25,7 +19,9 @@ import FigmaIcon from "@/assets/icons/figma-icon";
 import Link from "next/link";
 import ReactIcon from "@/assets/icons/react-icon";
 import VueIcon from "@/assets/icons/vue-icon";
+import { ToggleViewButton } from "./toggle-view-button";
 
+// Components : 카드 상태관리 컴포넌트
 export function CarouselDApiDemo() {
   const [collet, setCollect] = useState<boolean>(false);
 
@@ -36,23 +32,7 @@ export function CarouselDApiDemo() {
   return (
     <>
       {/* 전체보기 / 간추려서보기 */}
-      <div
-        className="mr-10 w-full flex justify-end group"
-        onClick={handleButtonClickCollte}
-      >
-        <div className="mr-2 flex items-end text-[11px] md:text-[12px] text-foreground/80 leading-relaxed cursor-pointer">
-          <div className="group-hover:text-foreground border-x-2 border-foreground/10 p-1">
-            {collet ? "전체 보기" : "간단히 보기"}
-          </div>
-        </div>
-        <button className=" border border-foreground/20 group-hover:border-foreground/40 p-1 rounded-md ">
-          {collet ? (
-            <BetweenHorizontalStart className="stroke-foreground/50 group-hover:stroke-foreground" />
-          ) : (
-            <BetweenHorizontalEnd className="stroke-foreground/50 group-hover:stroke-foreground" />
-          )}
-        </button>
-      </div>
+      <ToggleViewButton collet={collet} onClick={handleButtonClickCollte} />
       <div
         className={cn("flex flex-row flex-wrap", {
           "p-4": collet,
@@ -175,7 +155,7 @@ export function CarouselDApiDemo() {
                         )}
                         {item.msg === "vue" && (
                           <Link href={item.src}>
-                            <VueIcon className=" group-hover:stroke-blue-400 transition-all duration-200 ease-in-out transform group-hover:-translate-y-1" />
+                            <VueIcon className=" group-hover:stroke-blue-400 dark:stroke-white transition-all duration-200 ease-in-out transform group-hover:-translate-y-1 stroke-[0.5px]" />
                           </Link>
                         )}
                         {item.msg === "home" && (
