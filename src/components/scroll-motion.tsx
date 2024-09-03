@@ -9,11 +9,13 @@ export default function ScrollMotion() {
     restDelta: 0.001,
   });
 
-  console.log(scaleX);
   return (
     <motion.div
-      className="absolute top-[5.5rem] left-0 w-full h-1 bg-foreground/75 origin-left"
-      style={{ scaleX }}
+      className="absolute top-[5.5rem] left-0 w-full h-1 origin-left"
+      style={{
+        scaleX,
+        background: "linear-gradient(90deg, #3a3a3c , #c9c9c9 )",
+      }}
     />
   );
 }
