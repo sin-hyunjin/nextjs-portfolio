@@ -4,6 +4,7 @@ export type ObserverCallback = (
   entries: IntersectionObserverEntry[],
   observer: IntersectionObserver
 ) => void;
+
 export type HandleLinkClick = (
   href: string,
   event?: React.MouseEvent<HTMLAnchorElement>

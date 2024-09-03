@@ -1,11 +1,9 @@
-// src/types/index.ts
 import type { StaticImageData } from "next/image";
 
 type Card = {
   src: string;
   msg: string;
 };
-
 type LeftURLType = {
   home: string;
   code: string;
@@ -26,4 +24,16 @@ export interface CardContent {
   details: string[];
   card: Card[];
   leftURL: LeftURLType[];
+}
+
+export interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export interface Errors {
+  name?: string;
+  email?: string;
+  message?: string;
 }
