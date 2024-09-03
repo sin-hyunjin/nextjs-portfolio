@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import useHashStore from "./use-hash-store";
+import useHashStore from "../store/hash-store";
 import {
   HashChangeCallback,
   ObserverCallback,

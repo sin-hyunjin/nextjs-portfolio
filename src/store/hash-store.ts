@@ -9,9 +9,9 @@ import { HashStoreState } from "@/types/hash-types";
  *     2. useHash 훅을 만들어서 따로 가져오는 방법 :
  *
  */
-const useHashStore = create<HashStoreState>((set) => ({
+const hashStore = create<HashStoreState>((set) => ({
   hash: "#home",
   setHash: (newHash) => set({ hash: newHash }),
 }));
 
-export default useHashStore;
+export default hashStore;
