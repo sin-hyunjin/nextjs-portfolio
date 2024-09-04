@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import GithubIcon from "@/assets/icons/github-icon";
 import MessageWithForm from "./message-with-form";
-
+import { Mail, Rss } from "lucide-react";
 export default function Constant() {
   return (
     <section
@@ -64,8 +64,9 @@ export default function Constant() {
           </div>
           <div className="space-y-4">
             <Link href="mailto:blackduvet52@gmail.com?">
-              <button className="w-full px-4 py- h-12 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-300">
-                MAIL
+              <button className="w-full px-4  h-12 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-300 flex items-center justify-center space-x-2">
+                <Mail className="w-5 h-5" />
+                <span>MAIL</span>
               </button>
             </Link>
             <Link href="https://github.com/sin-hyunjin">
@@ -75,8 +76,9 @@ export default function Constant() {
               </button>
             </Link>
             <Link href="https://sin-hyunjin.github.io">
-              <button className="w-full px-4 py-2 h-12 text-sm font-medium text-white bg-teal-500 rounded-lg hover:bg-teal-600 focus:ring-2 focus:ring-teal-300">
-                BLOG
+              <button className="w-full px-4 py-2 h-12 text-sm font-medium text-white bg-teal-500 rounded-lg hover:bg-teal-600 focus:ring-2 focus:ring-teal-300 flex items-center justify-center space-x-2">
+                <Rss className="w-5 h-5" />
+                <span>BLOG</span>
               </button>
             </Link>
           </div>
