@@ -7,7 +7,7 @@ export default function Constant() {
   return (
     <section
       id="constant"
-      className="flex flex-col  min-h-screen p-8  scroll-mt-14"
+      className="flex flex-col  min-h-screen p-8  scroll-mt-10"
     >
       {/* 제목 */}
       <div className="flex justify-end border-t-2 border-t-foreground/10">

@@ -7,7 +7,7 @@ export default function Project() {
   return (
     <section
       id="project"
-      className="flex flex-col min-h-screen p-8 justify-between scroll-mt-14"
+      className="flex flex-col min-h-screen p-8 justify-between scroll-mt-10"
     >
       {/* 제목 */}
       <div className="flex justify-start border-t-2 border-t-foreground/10">
@@ -25,7 +25,7 @@ export default function Project() {
         <CarouselDApiDemo />
       </div>
       <div className="flex justify-center items-center mt-20">
-        <Link href="#constant" onClick={(e) => scrollToSection(e, "#about")}>
+        <Link href="#constant" onClick={(e) => scrollToSection(e, "#constant")}>
           {" "}
           <ArrowBigDownDash className="arrow" />
         </Link>

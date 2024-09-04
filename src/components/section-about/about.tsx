@@ -9,7 +9,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="flex flex-col px-10 justify-around min-h-screen scroll-mt-20 "
+      className="flex flex-col px-10 justify-around min-h-screen scroll-mt-16 "
     >
       {/* 제목 */}
       <div className="flex justify-end border-t-2 border-t-foreground/10">
@@ -23,12 +23,12 @@ export default function About() {
         </h1>
       </div>
       {/* introduce */}
-      
+
       <Introduce />
-      
+
       {/* stacks */}
       <Stacks></Stacks>
-      
+
       <div className="flex justify-center items-center mt-20 mb-12">
         {" "}
         <Link href="#project" onClick={(e) => scrollToSection(e, "#project")}>
