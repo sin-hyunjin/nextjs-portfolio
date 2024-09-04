@@ -10,7 +10,8 @@ import useScrollManager from "@/hooks/use-scroll-manager";
 import ScrollMotion from "@/components/scroll-motion";
 import { useTheme } from "next-themes";
 import SubNav from "./sub-nav";
-
+import hj from "@/assets/icons/HJ.svg";
+import Image from "next/image";
 // Theme labels를 객체로 관리하여 OCP 준수
 const themeLabels: Record<string, string> = {
   light: "라이트",
@@ -69,7 +70,7 @@ export default function MainNav() {
               href={links[0].href}
               onClick={(e) => handleLinkClick(links[0].href, e)}
             >
-              현진 포트폴리오
+              <span> HJ. Portfolio</span>
             </Link>
           </div>
           {/* Link 오른쪽 */}
