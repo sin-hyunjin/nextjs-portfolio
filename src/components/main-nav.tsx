@@ -98,11 +98,11 @@ export default function MainNav() {
               ))}
               <div className="relative flex h-[48px] items-center justify-center p-2 text-sm font-medium">
                 <div className="mr-1 opacity-40">{"|"}</div>
-                <div className="group -m-1">
+
+                <div className="group -m-1 ">
                   {" "}
                   <ModeToggle />
-                  <p className="absolute hidden group-hover:block text-[10px] px-1  text-foreground/75">
-                    {" "}
+                  <p className=" absolute hidden group-hover:block w-9 text-[10px] px-1 text-foreground/75 text-center">
                     {getThemeLabel(currentTheme)}
                   </p>
                 </div>
