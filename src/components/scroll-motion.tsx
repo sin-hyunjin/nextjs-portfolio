@@ -11,7 +11,7 @@ export default function ScrollMotion() {
 
   return (
     <motion.div
-      className="absolute top-[5.5rem] left-0 w-full h-1 origin-left"
+      className="absolute top-[4.5rem] left-0 w-full h-1 origin-left"
       style={{
         scaleX,
         background: "linear-gradient(90deg, #3a3a3c , #c9c9c9 )",

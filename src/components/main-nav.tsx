@@ -60,7 +60,7 @@ export default function MainNav() {
   return (
     <header>
       {/* Main Nav */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-background/95 border-border backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b-0 shadow-b-shadow">
+      <div className="fixed top-0 left-0 w-full z-50 bg-background/95 border-border backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b-0 shadow-b-shadow ">
         <ScrollMotion />
         <div className="flex justify-between max-w-5xl mx-auto">
           {/* 제목왼쪽 */}
@@ -73,14 +73,14 @@ export default function MainNav() {
             </Link>
           </div>
           {/* Link 오른쪽 */}
-          <div className="flex p-5">
+          <div className="flex p-3 ">
             <HambergerMenuToggle
               menuToggle={menuToggle}
               handleClick={handleClickMenuToggle}
             />
 
             {/* (768px 이상 화면에서만 보임) */}
-            <div className={cn("hidden md:flex")}>
+            <div className={cn("hidden md:flex ")}>
               {links.map((link) => (
                 <Link
                   key={link.name}
