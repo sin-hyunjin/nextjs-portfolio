@@ -18,7 +18,7 @@ export const CardContents: CardContent[] = [
     titleIcon: { src: portfolioIcon, alt: "portfolio 아이콘" }, // 수정
     description:
       "Next.js를 활용하여 데스크탑, 아이패드, 모바일 3가지 반응형과 시스템에 따른 다크모드를 지원하며, framer-motion을 이용해 다양한 동적 요소를 추가하여 인터랙티브한 페이지를 구현했습니다.",
-    techStack: ["Next.js", "TypeScript", "TailwindCSS", "Vercle"],
+    techStack: ["Next.js", "TypeScript", "TailwindCSS", "Zustand", "Vercel"],
     details: [
       "Next.js 사용 SSR 개발 및 반응형 웹사이트",
       "ui.shadcn,framer-motion등 library를 적용한 빠른 개발",
