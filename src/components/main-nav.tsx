@@ -2,16 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { Menu, FileDown } from "lucide-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
-import GithubIcon from "@/assets/icons/github-icon";
 import { ModeToggle } from "./mode-toggle";
 import { cn } from "@/lib/utils";
 import useScrollManager from "@/hooks/use-scroll-manager";
 import ScrollMotion from "@/components/scroll-motion";
-import { useTheme } from "next-themes";
 import SubNav from "./sub-nav";
-import hj from "@/assets/icons/HJ.svg";
-import Image from "next/image";
+import GithubIcon from "@/assets/icons/github-icon";
+
 // Theme labels를 객체로 관리하여 OCP 준수
 const themeLabels: Record<string, string> = {
   light: "라이트",
@@ -109,7 +108,11 @@ export default function MainNav() {
                 </div>
 
                 <div className="group">
-                  <Link href="https://github.com/sin-hyunjin">
+                  <Link
+                    href="https://github.com/sin-hyunjin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <div className="hover:bg-foreground/10 rounded-full p-1">
                       <GithubIcon
                         className="fill-foreground/60 hover:fill-foreground "
@@ -124,7 +127,11 @@ export default function MainNav() {
                 </div>
 
                 <div className="ml-1 group">
-                  <Link href="https://drive.google.com/file/d/12cvzd1Ip7ItjbMB-EDypu63PZrRGHxMr/view?usp=drive_link">
+                  <Link
+                    href="https://drive.google.com/file/d/12cvzd1Ip7ItjbMB-EDypu63PZrRGHxMr/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <div className="hover:bg-foreground/10 rounded-md p-1">
                       <FileDown className="stroke-foreground/60 hover:stroke-foreground" />
                     </div>
@@ -165,12 +172,20 @@ export default function MainNav() {
               {" "}
               <ModeToggle />
             </div>
-            <Link href="https://github.com/sin-hyunjin">
+            <Link
+              href="https://github.com/sin-hyunjin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="m-4 hover:bg-foreground/10 p-1 rounded-full">
                 <GithubIcon />
               </div>
             </Link>
-            <Link href="https://drive.google.com/file/d/12cvzd1Ip7ItjbMB-EDypu63PZrRGHxMr/view?usp=drive_link">
+            <Link
+              href="https://drive.google.com/file/d/12cvzd1Ip7ItjbMB-EDypu63PZrRGHxMr/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="ml-2 hover:bg-foreground/10 p-1 rounded-sm">
                 <FileDown />
               </div>
