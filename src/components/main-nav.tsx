@@ -49,7 +49,6 @@ export default function MainNav() {
   const { hash, handleLinkClick } = useScrollManager();
   const [menuToggle, setMenuToggle] = useState<boolean>(true);
 
-  console.log(hash);
   useEffect(() => {
     setCurrentTheme(theme || "light");
   }, [theme]);
