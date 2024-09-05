@@ -31,7 +31,7 @@ export default function Constant() {
           안녕하세요! 프론트엔드 개발자 신현진입니다.
         </p>
         <p className="text-xs md:text-sm text-foreground/70 leading-relaxed max-w-xl">
-          인공지능 사관학교에서 다양한 프로젝트와 스터디에서 여러 프로젝트를
+          인공지능사관학교 에서 다양한 프로젝트와 스터디에서 여러 프로젝트를
           진행하였고, 이를 통해 웹 개발 업무 프로세스에 대한 전반적인 이해를
           습득하였습니다.
         </p>
