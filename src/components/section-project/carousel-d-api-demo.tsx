@@ -141,7 +141,7 @@ export function CarouselDApiDemo() {
                     </ul>
                   </CardContent>
                 </Card>
-                <div className="flex justify-around py-5 mt-4 ml-4  rounded-lg shadow-lg">
+                <div className="flex justify-around py-5 mt-4 ml-4  rounded-lg shadow-lg bg-background">
                   {content.card.map((item, index) => (
                     <div
                       key={index}
