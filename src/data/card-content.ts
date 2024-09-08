@@ -59,7 +59,7 @@ export const CardContents: CardContent[] = [
     ],
     card: [
       { src: "https://chkapoka-client.vercel.app/", msg: "home" },
-      { src: "https://github.com/Chukapoka", msg: "github" },
+      { src: "https://github.com/sin-hyunjin/Chukapoka-server", msg: "github" },
       {
         src: "https://www.figma.com/design/6Tu7H514UE9JcZyPffyKjw/20231222_CHUKAPOKA?node-id=16-766&t=FQXtS8SdmNU5HLrB-1",
         msg: "figma",
@@ -68,7 +68,7 @@ export const CardContents: CardContent[] = [
     leftURL: [
       {
         home: "https://chkapoka-client.vercel.app/",
-        code: "https://github.com/Chukapoka",
+        code: "https://github.com/sin-hyunjin/Chukapoka-server",
       },
     ],
   },
