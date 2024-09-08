@@ -1,9 +1,10 @@
 "use client";
-import Stacks from "@/components/section-about/stacks";
+
+import Link from "next/link";
 import { ArrowBigDownDash } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
-import Link from "next/link";
-import Introduce from "@/components/section-about/introduce";
+import Stacks from "@/components/(overview)/section-about/stacks";
+import Introduce from "@/components/(overview)/section-about/introduce";
 
 export default function About() {
   return (

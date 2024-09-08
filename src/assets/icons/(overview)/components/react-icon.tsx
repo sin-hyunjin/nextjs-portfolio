@@ -1,5 +1,5 @@
 import React from "react";
-import Icon, { IconProps } from "@/assets/icons/icon"; // 공통 Icon 컴포넌트
+import Icon, { IconProps } from "@/assets/icons/(overview)/components/icon"; // 공통 Icon 컴포넌트
 
 const ReactIcon: React.FC<IconProps> = (props) => {
   return (

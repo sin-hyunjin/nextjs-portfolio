@@ -24,7 +24,7 @@ const letterVariants = {
   },
 };
 
-const LoadingScreen = ({ text }: LoadingScreenProps) => {
+export const LoadingScreen = ({ text }: LoadingScreenProps) => {
   return (
     <motion.div
       className="flex items-center justify-center h-screen bg-background"

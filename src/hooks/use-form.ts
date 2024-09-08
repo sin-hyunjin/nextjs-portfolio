@@ -1,6 +1,14 @@
 import { useState, ChangeEvent } from "react";
 import { FormData, Errors } from "@/types/card-type";
 
+/** useForm : 폼 상태 관리와 유효성 검사를 간편하게 처리하기 위해 설계
+ * 1. 상태 관리: useState를 사용하여 폼 데이터를 관리 (formData, errors)
+ * 2. 입력 필드 값 변경 핸들러: handleChange는 입력 필드 값이 변경될 때 이를 처리
+ * 3. 유효성 검사: validateFormData는 간단한 유효성 검사 로직을
+ * 4. 폼 초기화: resetForm을 통해 폼의 초기 상태로 복구
+
+
+ */
 const useForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",

@@ -1,11 +1,17 @@
 "use client";
 import { useEffect } from "react";
-import useHashStore from "../store/hash-store";
+import useHashStore from "../stores/store/hash-store";
 import {
   HashChangeCallback,
   ObserverCallback,
   HandleLinkClick,
 } from "@/types/hash-types";
+
+/** useScrollManager :  해시 기반 내비게이션 및 스크롤 관리를 위한 기능
+ *
+ *
+ *
+ */
 
 const useScrollManager = () => {
   const { hash, setHash } = useHashStore(); // URL의 해시 상태를 관리하기 위한 hooks

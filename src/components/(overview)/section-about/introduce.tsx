@@ -1,13 +1,13 @@
 "use client";
-import hp2 from "@/assets/icons/hp2.jpeg";
+
 import Image from "next/image";
+import { ProfileSee } from "@/assets/icons/(overview)/index";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+
 export default function Introduce() {
   const { scrollY } = useScroll();
-  const xRange = useTransform(scrollY, [330, 600], [0.1, 1]);
+  const xRange = useTransform(scrollY, [410, 420], [0, 1]);
 
-  // Spring으로 부드럽게 애니메이션
-  const x = useSpring(xRange, { stiffness: 100, damping: 30 });
   return (
     <div className="shadow-sm shadow-foreground/10 p-12 mb-16 rounded-lg md:mb-24">
       <h1 className="inline font-bold text-foreground/80 text-xl tracking-tighter md:text-2xl">
@@ -25,8 +25,8 @@ export default function Introduce() {
         >
           <div className="rounded-full relative overflow-hidden shadow-md">
             <Image
-              src={hp2}
-              alt="공부"
+              src={ProfileSee}
+              alt="ProfileSee"
               className=" rounded-full  object-cover w-44 h-44 md:w-56 md:h-56"
             />
           </div>

@@ -2,7 +2,7 @@ interface SuccessMessageProps {
   show: boolean;
 }
 
-const SuccessMessage = ({ show }: SuccessMessageProps) => {
+export function SuccessMessage({ show }: SuccessMessageProps) {
   if (!show) return null;
 
   return (
@@ -12,6 +12,4 @@ const SuccessMessage = ({ show }: SuccessMessageProps) => {
       </h1>
     </div>
   );
-};
-
-export default SuccessMessage;
+}

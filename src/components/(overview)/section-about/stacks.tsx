@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import {
   motion,
@@ -8,10 +9,8 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
-import StackCoreIcon from "@/assets/icons/stack-core-icon.svg";
-import StackMoreIcon from "@/assets/icons/stack-more-icon.svg";
+import { StackCoreIcon, StackMoreIcon } from "@/assets/icons/(overview)";
 import { StackSeleton } from "@/components/ui/skeleton";
-import { useState, useRef } from "react";
 
 const stacksText = {
   front: [
@@ -49,7 +48,7 @@ export default function Stacks() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { scrollY } = useScroll();
-  const yRange = useTransform(scrollY, [830, 1000], [0.1, 1]); // 스크롤 범위와 변환 범위를 조정
+  const yRange = useTransform(scrollY, [870, 880], [0, 1]); // 스크롤 범위와 변환 범위를 조정
   // 스크롤 위치에 따라 x축 변환 값 생성
   const xLeftRange = useTransform(scrollY, [500, 1100], [-100, 0]);
   const xRightRange = useTransform(scrollY, [900, 1100], [100, 0]);

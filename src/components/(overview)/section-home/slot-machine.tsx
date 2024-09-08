@@ -1,9 +1,8 @@
-// components/SlotMachine.tsx
 "use client";
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { ShuffleIcon } from "lucide-react";
-// import ShuffleIcon from "@/components/Icons/shuffle";
 
 interface Props {
   textData: string[];

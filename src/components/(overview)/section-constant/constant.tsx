@@ -1,8 +1,8 @@
 import Link from "next/link";
-
-import GithubIcon from "@/assets/icons/github-icon";
+import { GithubIcon } from "@/assets/icons/(overview)";
 import MessageWithForm from "./message-with-form";
 import { Mail, Rss } from "lucide-react";
+
 export default function Constant() {
   return (
     <section

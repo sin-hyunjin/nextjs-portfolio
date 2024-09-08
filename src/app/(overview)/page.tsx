@@ -1,15 +1,16 @@
 "use client";
 
-import GithubIcon from "@/assets/icons/github-icon";
-import Link from "next/link";
-
-import Home from "@/components/section-home/home";
-import About from "@/components/section-about/about";
-import Project from "@/components/section-project/project";
-import Constant from "@/components/section-constant/constant";
-import LoadingScreen from "@/components/loading-screen";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import useScrollManager from "@/hooks/use-scroll-manager";
+import { GithubIcon } from "@/assets/icons/(overview)";
+import {
+  About,
+  Constant,
+  Home,
+  LoadingScreen,
+  Project,
+} from "@/components/(overview)/index";
 
 // Main Page 컴포넌트
 export default function Page() {

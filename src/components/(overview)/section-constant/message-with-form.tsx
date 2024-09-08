@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "../ui/textarea";
-import { sendEmail } from "@/lib/action";
-import SuccessMessage from "./success-message";
+import { Textarea } from "@/components/ui/textarea";
+import { sendEmail } from "@/lib/send-email";
+import { SuccessMessage } from "./success-message";
 import useForm from "@/hooks/use-form";
 
 export default function MessageWithForm() {

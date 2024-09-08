@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -8,17 +11,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CodeXml, TvMinimal, House } from "lucide-react";
-import Image from "next/image";
-
-import { useState } from "react";
-import { cn } from "@/lib/utils";
 import { CardContents } from "@/data/card-content";
-import BadgeList from "../ui/badge-list";
-import GithubIcon from "@/assets/icons/github-icon";
-import FigmaIcon from "@/assets/icons/figma-icon";
-import Link from "next/link";
-import ReactIcon from "@/assets/icons/react-icon";
-import VueIcon from "@/assets/icons/vue-icon";
+import {
+  GithubIcon,
+  FigmaIcon,
+  ReactIcon,
+  VueIcon,
+} from "@/assets/icons/(overview)";
+
+import { cn } from "@/lib/utils";
+import BadgeList from "@/components/ui/badge-list";
 import { ToggleViewButton } from "./toggle-view-button";
 
 // Components : 카드 상태관리 컴포넌트
@@ -71,6 +73,7 @@ export function CarouselDApiDemo() {
                     <div className="flex " key={index}>
                       <Link
                         href={item.home}
+                        target="_black"
                         className="mr-1 p-2 border-2 rounded-full border-white/60 hover:border-white"
                       >
                         <TvMinimal
@@ -82,6 +85,7 @@ export function CarouselDApiDemo() {
                       </Link>
                       <Link
                         href={item.code}
+                        target="_black"
                         className="ml-1 p-2 border-2 rounded-full border-white/60 hover:border-white"
                       >
                         <CodeXml
@@ -149,33 +153,34 @@ export function CarouselDApiDemo() {
                     >
                       <div className="absolute flex flex-col items-center justify-center transition-all duration-200 ease-in-out">
                         {item.msg === "react" && (
-                          <Link href={item.src}>
+                          <Link href={item.src} target="_black">
                             <ReactIcon className="items-center group-hover:fill-blue-400 transition-all duration-200 ease-in-out transform group-hover:-translate-y-1" />
                           </Link>
                         )}
                         {item.msg === "vue" && (
-                          <Link href={item.src}>
+                          <Link href={item.src} target="_black">
                             <VueIcon className=" group-hover:stroke-blue-400 dark:stroke-white transition-all duration-200 ease-in-out transform group-hover:-translate-y-1 stroke-[0.5px]" />
                           </Link>
                         )}
                         {item.msg === "home" && (
-                          <Link href={item.src}>
+                          <Link href={item.src} target="_black">
                             <House className="group-hover:stroke-blue-400 transition-all duration-200 ease-in-out transform group-hover:-translate-y-1" />
                           </Link>
                         )}
                         {item.msg === "github" && (
-                          <Link href={item.src}>
+                          <Link href={item.src} target="_black">
                             <GithubIcon className="group-hover:fill-blue-400 transition-all duration-200 ease-in-out transform group-hover:-translate-y-1" />
                           </Link>
                         )}
                         {item.msg === "figma" && (
-                          <Link href={item.src}>
+                          <Link href={item.src} target="_black">
                             <FigmaIcon className="group-hover:fill-blue-400 transition-all duration-200 ease-in-out transform group-hover:-translate-y-1" />
                           </Link>
                         )}
 
                         <Link
                           href={item.src}
+                          target="_black"
                           className="hidden text-xs text-center transform scale-75 opacity-0 translate-y-2 group-hover:block group-hover:scale-100 group-hover:opacity-100 group-hover:translate-y-0 group-hover:text-blue-400 transition-all duration-300 ease-in-out"
                         >
                           {item.msg}

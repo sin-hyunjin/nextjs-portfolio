@@ -1,8 +1,9 @@
 "use client";
-import SlotMachine from "@/components/section-home/slot-machine";
+
+import Link from "next/link";
+import SlotMachine from "@/components/(overview)/section-home/slot-machine";
 import { scrollToSection } from "@/lib/utils";
 import { ArrowBigDownDash } from "lucide-react";
-import Link from "next/link";
 
 const textData = [
   "사용자 중심의 웹 개발을 배우고 성장하는 중인",

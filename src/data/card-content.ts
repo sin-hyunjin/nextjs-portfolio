@@ -1,21 +1,22 @@
 // src/data/
 import { CardContent } from "@/types/card-type";
-
-import chukapoka from "@/assets/icons/chukapoka.png";
-import chukapokaIcon from "@/assets/icons/chukapoka-icon.png";
-import gamgi from "@/assets/icons/gamgi-moniter.png";
-import gamgiIcon from "@/assets/icons/gamgi-icon.png";
-import NDB from "@/assets/icons/NDB.png";
-import portfolio from "@/assets/icons/portfolio.svg";
-import portfolioIcon from "@/assets/icons/resume-and-cv.png";
-import ReactVue from "@/assets/icons/react-vue.svg";
+import {
+  Chukapoka,
+  ChukapokaIcon,
+  NDB,
+  ReactVue,
+  Portfolio,
+  PortfolioIcon,
+  GamgiMoniter,
+  GamgiIcon,
+} from "@/assets/icons/(overview)";
 
 export const CardContents: CardContent[] = [
   {
     title: "Portfoilo",
     subtitle: "개인 포트폴리오",
-    image: { src: portfolio, alt: "portfolio 이미지" }, // 수정
-    titleIcon: { src: portfolioIcon, alt: "portfolio 아이콘" }, // 수정
+    image: { src: Portfolio, alt: "portfolio 이미지" }, // 수정
+    titleIcon: { src: PortfolioIcon, alt: "portfolio 아이콘" }, // 수정
     description:
       "Next.js를 활용하여 데스크탑, 아이패드, 모바일 3가지 반응형과 시스템에 따른 다크모드를 지원하며, framer-motion을 이용해 다양한 동적 요소를 추가하여 인터랙티브한 페이지를 구현했습니다.",
     techStack: ["Next.js", "TypeScript", "TailwindCSS", "Zustand", "Vercel"],
@@ -39,8 +40,8 @@ export const CardContents: CardContent[] = [
   {
     title: "Cukapoka",
     subtitle: "온라인 축하 편지 공유 사이트",
-    image: { src: chukapoka, alt: "Cukapoka 이미지" },
-    titleIcon: { src: chukapokaIcon, alt: "Cukapoka 아이콘" },
+    image: { src: Chukapoka, alt: "Cukapoka 이미지" },
+    titleIcon: { src: ChukapokaIcon, alt: "Cukapoka 아이콘" },
     description:
       "온라인으로 선물과 편지를 손쉽게 공유할 수 있는 플랫폼입니다. 사용자들은 다양한 선물과 개인화된 편지를 트리로 제작하고, 소중한 순간에 맞춰 친구와 가족에게 전송할 수 있습니다. ",
     techStack: [
@@ -74,8 +75,8 @@ export const CardContents: CardContent[] = [
   {
     title: "감기",
     subtitle: "사용자 감정일기 분석 서비스 개발",
-    image: { src: gamgi, alt: "Cukapoka 이미지" }, // 수정
-    titleIcon: { src: gamgiIcon, alt: "Cukapoka 아이콘" }, // 수정
+    image: { src: GamgiMoniter, alt: "Cukapoka 이미지" }, // 수정
+    titleIcon: { src: GamgiIcon, alt: "Cukapoka 아이콘" }, // 수정
     description:
       "AI 감정분석 기술을 통해 사용자가 자신을 돌아보고 감정을 관리할 수 있는 경험을 제공하는 플랫폼입니다. 일기 쓰기를 통해 본인의 감정을 파악하여 다스릴 수 있으며 감정을 관리하는데 도움을 줄 수 있는 감정 일기의 필요성을 느껴서 이 프로젝트를 진행하게 되었습니다.",
     techStack: [
@@ -112,7 +113,7 @@ export const CardContents: CardContent[] = [
     title: "NDB",
     subtitle: "Chat GPT를 이용한 코딩학습서비스",
     image: { src: NDB, alt: "Cukapoka 이미지" }, // 수정
-    titleIcon: { src: gamgiIcon, alt: "Cukapoka 아이콘" }, // 수정
+    titleIcon: { src: GamgiIcon, alt: "Cukapoka 아이콘" }, // 수정
     description:
       "IT취업 희망자 수가 증가하고 있습니다. 저 역시 공부중이지만 javascript를 공부하고 axios와 promise, async/await를 활용 등 원하는 개념의 예제를 찾기가 어렵다는 점 이 있었습니다. 그래서 내가 원하는 개념을 쉽게 찾고, 설명이 있으면 좋겠다 생각하여 개발하게 되었습니다.",
     techStack: ["HTML5", "CSS3", "JavaScript", "Node.js", "MySQL", "ChatGPT"],

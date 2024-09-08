@@ -1,15 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, FileDown } from "lucide-react";
-import { useTheme } from "next-themes";
 import Link from "next/link";
-import { ModeToggle } from "./mode-toggle";
+import { useTheme } from "next-themes";
+import { Menu, FileDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { GithubIcon } from "@/assets/icons/(overview)";
+import { ScrollMotion, SubNav, ModeToggle } from "@/components/(overview)/nav";
 import useScrollManager from "@/hooks/use-scroll-manager";
-import ScrollMotion from "@/components/scroll-motion";
-import SubNav from "./sub-nav";
-import GithubIcon from "@/assets/icons/github-icon";
 
 // Theme labels를 객체로 관리하여 OCP 준수
 const themeLabels: Record<string, string> = {

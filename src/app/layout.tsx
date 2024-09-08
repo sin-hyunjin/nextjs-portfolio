@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "@/assets/css/globals.css";
 import "normalize.css"; // reset.css
-import MainNav from "@/components/main-nav";
-import { ThemeProvider } from "@/components/theme-provider";
 import { poppins } from "@/assets/fonts/fonts";
+import { ThemeProvider } from "@/stores/providers/theme-provider";
+import { MainNav } from "@/components/(overview)";
 
 export const metadata: Metadata = {
   title: "HJ Portfolio",

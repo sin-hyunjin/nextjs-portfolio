@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +10,7 @@ interface SubNavProps {
   ) => void;
 }
 
-export default function SubNav({ links, hash, handleLinkClick }: SubNavProps) {
+export function SubNav({ links, hash, handleLinkClick }: SubNavProps) {
   return (
     <div className="fixed w-30 right-0 top-1/2 pr-3 transform -translate-y-1/2 flex flex-col justify-center space-y-1">
       {links.map((link) => (
