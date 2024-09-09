@@ -34,7 +34,7 @@ export default function Home() {
           <SlotMachine textData={textData} />
         </div>
         <p className="text-base md:text-xl sm:text-lg">
-          FE Dvelo 개발자 <span className="font-bold">신현진</span>
+          프론트엔드 개발자 <span className="font-bold">신현진</span>
           입니다.
         </p>
       </div>
