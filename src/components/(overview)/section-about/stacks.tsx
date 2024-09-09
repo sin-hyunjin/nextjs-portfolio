@@ -14,16 +14,14 @@ import { StackSeleton } from "@/components/ui/skeleton";
 
 const stacksText = {
   front: [
-    { name: "HTML" },
-    { name: "CSS" },
-    { name: "Tailwind CSS" },
-    { name: "JavaScript" },
-    { name: "TypeScript" },
     { name: "React" },
     { name: "Nextjs" },
-    { name: "React Query" },
+    { name: "TypeScript" },
+    { name: "Tailwind CSS" },
+    { name: "Zustand" },
   ],
   back: [
+    { name: "Node" },
     { name: "Java" },
     { name: "Spring Boot" },
     { name: "Spring Security" },
@@ -38,6 +36,7 @@ const stacksText = {
   utils: [
     { name: "Git" },
     { name: "GitHub" },
+    { name: "Figma" },
     { name: "Swagger" },
     { name: "Vercel" },
   ],
