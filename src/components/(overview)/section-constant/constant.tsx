@@ -62,7 +62,7 @@ export default function Constant() {
               사소한 의견도 감사히 받겠습니다.
             </span>
           </div>
-          <div className="space-y-4">
+          <div className="flex flex-col space-y-2 ">
             <Link href="mailto:blackduvet52@gmail.com?">
               <button className="w-full px-4  h-12 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-300 flex items-center justify-center space-x-2">
                 <Mail className="w-5 h-5" />

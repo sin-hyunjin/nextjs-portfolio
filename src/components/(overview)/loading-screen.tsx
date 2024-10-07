@@ -44,5 +44,3 @@ export const LoadingScreen = ({ text }: LoadingScreenProps) => {
     </motion.div>
   );
 };
-
-export default LoadingScreen;

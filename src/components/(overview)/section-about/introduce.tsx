@@ -9,7 +9,7 @@ export default function Introduce() {
   const xRange = useTransform(scrollY, [410, 420], [0, 1]);
 
   return (
-    <div className="shadow-sm shadow-foreground/10 p-12 mb-16 rounded-lg md:mb-24">
+    <div className=" shadow-foreground/10 p-12 mb-16 rounded-lg md:mb-24">
       <h1 className="inline font-bold text-foreground/80 text-xl tracking-tighter md:text-2xl">
         Introduce
       </h1>

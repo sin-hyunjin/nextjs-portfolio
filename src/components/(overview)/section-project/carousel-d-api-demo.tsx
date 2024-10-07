@@ -50,13 +50,16 @@ export function CarouselDApiDemo() {
             })}
           >
             <Card
-              className={cn("p-2 shadow-lg group flex flex-col", {
-                "w-full ": collet,
-                "w-[22rem] sm:w-2/5 mr-4 h-96 md:h-full sm:h-72": !collet,
-              })}
+              className={cn(
+                "p-2 shadow-lg group flex flex-col bg-background/50",
+                {
+                  "w-full ": collet,
+                  "w-[22rem] sm:w-2/5 mr-4 h-96 md:h-full sm:h-72": !collet,
+                }
+              )}
             >
               <CardHeader
-                className={cn("relative", {
+                className={cn("relative ", {
                   "h-40": collet,
                   "h-60": !collet,
                 })}
@@ -64,7 +67,7 @@ export function CarouselDApiDemo() {
                 <Image
                   src={content.image.src}
                   alt={content.image.alt}
-                  className=" rounded-lg w-full h-full"
+                  className=" rounded-lg w-full h-full object-cover"
                 />
                 {/* Hover overlay  inset?*/}
                 <div className="absolute m-1 -top-[2px] bottom-1 inset-0 flex justify-center items-center gap-2 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-300 rounded-lg ">
@@ -125,7 +128,7 @@ export function CarouselDApiDemo() {
             {/* 오른쪽 카드 콘텐츠  */}
             {!collet && (
               <div className="hidden flex-col sm:flex">
-                <Card className=" flex  flex-col  flex-1  ml-4 shadow-lg">
+                <Card className=" flex  flex-col  flex-1  ml-4 shadow-lg bg-background/50">
                   <CardHeader>
                     <CardTitle className="text-base md:text-xl">
                       {content.subtitle}
@@ -145,13 +148,13 @@ export function CarouselDApiDemo() {
                     </ul>
                   </CardContent>
                 </Card>
-                <div className="flex justify-around py-5 mt-4 ml-4  rounded-lg shadow-lg bg-background">
+                <div className="flex justify-around py-5 mt-4 ml-4  rounded-lg shadow-lg bg-background/50">
                   {content.card.map((item, index) => (
                     <div
                       key={index}
-                      className="relative flex flex-col justify-center items-center p-1 rounded-full group"
+                      className="relative flex flex-col justify-center items-center p-1 rounded-full group "
                     >
-                      <div className="absolute flex flex-col items-center justify-center transition-all duration-200 ease-in-out">
+                      <div className="absolute flex flex-col items-center justify-center transition-all duration-200 ease-in-out ">
                         {item.msg === "react" && (
                           <Link href={item.src} target="_black">
                             <ReactIcon className="items-center group-hover:fill-blue-400 transition-all duration-200 ease-in-out transform group-hover:-translate-y-1" />

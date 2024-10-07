@@ -5,6 +5,7 @@ import { ArrowBigDownDash } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 import Stacks from "@/components/(overview)/section-about/stacks";
 import Introduce from "@/components/(overview)/section-about/introduce";
+import { SectionTitle } from "../section-title";
 
 export default function About() {
   return (
@@ -14,17 +15,12 @@ export default function About() {
     >
       {/* 제목 */}
       <div className="flex justify-end border-t-2 border-t-foreground/10">
-        <h1
-          className={`font-bold text-foreground/80 text-5xl tracking-tighter md:text-7xl sm:text-6xl`}
-        >
-          ABOUT.
-          <p className="text-xs tracking-normal text-foreground/50 pl-1 md:text-base sm:text-sm">
-            저는 이런 생각을 가지고 있습니다.
-          </p>
-        </h1>
+        <SectionTitle
+          title="ABOUT."
+          description="  저는 이런 생각을 가지고 있습니다."
+        />
       </div>
       {/* introduce */}
-
       <Introduce />
 
       {/* stacks */}

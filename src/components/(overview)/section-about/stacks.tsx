@@ -22,19 +22,14 @@ const stacksText = {
   ],
   back: [
     { name: "Node" },
+    { name: "Supabase" },
     { name: "Java" },
     { name: "Spring Boot" },
-    { name: "Spring Security" },
     { name: "RestAPI" },
     { name: "JPA" },
   ],
-  dbSkills: [
-    { name: "MySQL" },
-    { name: "H2 Database" },
-    { name: "PostgreSQL" },
-  ],
+  dbSkills: [{ name: "MySQL" }, { name: "Prisma" }, { name: "PostgreSQL" }],
   utils: [
-    { name: "Git" },
     { name: "GitHub" },
     { name: "Figma" },
     { name: "Swagger" },
@@ -70,17 +65,20 @@ export default function Stacks() {
   return (
     <>
       <div className="mb-14">
-        <h3
-          className={` inline font-bold text-foreground/80 text-xl pl-12 tracking-tighter md:text-2xl `}
-        >
-          Stacks
-        </h3>
-        <button
-          onClick={handleButtonClick}
-          className="text-[10px] font-medium text-background/90 bg-foreground/80   ml-3 px-2 py-1  rounded-2xl md:text-xs sm:text-xs hover:bg-foreground/70 hover:text-background/80"
-        >
-          {isMoreSkills ? "Core Stack >" : "More Stack >"}
-        </button>
+        <div className="flex items-center">
+          <h3
+            className={`inline font-bold text-foreground/80 text-xl pl-12 tracking-tighter md:text-2xl `}
+          >
+            Stacks
+          </h3>
+          <button
+            onClick={handleButtonClick}
+            className=" text-[10px] font-medium text-background/90 bg-foreground/80 ml-3 px-2 py-1  rounded-2xl md:text-xs sm:text-xs hover:bg-foreground/70 hover:text-background/80"
+          >
+            {isMoreSkills ? "Core Stack >" : "More Stack >"}
+          </button>
+        </div>
+
         {isLoading ? (
           <StackSeleton />
         ) : (
