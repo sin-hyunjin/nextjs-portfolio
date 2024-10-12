@@ -1,5 +1,4 @@
 import { CarouselDApiDemo } from "@/components/(overview)/section-project/carousel-d-api-demo";
-import { Text } from "@/components/text";
 import { scrollToSection } from "@/lib/utils";
 import { ArrowBigDownDash } from "lucide-react";
 import Link from "next/link";
