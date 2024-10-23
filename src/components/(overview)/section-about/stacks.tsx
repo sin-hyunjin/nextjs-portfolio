@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   motion,
@@ -8,6 +8,7 @@ import {
   useScroll,
   useTransform,
   useSpring,
+  useInView,
 } from "framer-motion";
 import { StackCoreIcon, StackMoreIcon } from "@/assets/icons/(overview)";
 import { StackSeleton } from "@/components/ui/skeleton";
@@ -42,14 +43,9 @@ export default function Stacks() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { scrollY } = useScroll();
-  const yRange = useTransform(scrollY, [870, 880], [0, 1]); // 스크롤 범위와 변환 범위를 조정
-  // 스크롤 위치에 따라 x축 변환 값 생성
-  const xLeftRange = useTransform(scrollY, [500, 1100], [-100, 0]);
-  const xRightRange = useTransform(scrollY, [900, 1100], [100, 0]);
-
-  // Spring으로 부드럽게 애니메이션
-  const xLeft = useSpring(xLeftRange, { stiffness: 300, damping: 30 });
-  const xRight = useSpring(xRightRange, { stiffness: 300, damping: 30 });
+  const sectionRef = useRef(null);
+  // useInView 훅 사용, 60% 이상 보일 때 true가 됨
+  const isInView = useInView(sectionRef, { amount: 0.6 });
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     // console.log("Page scroll: ", latest);
@@ -64,88 +60,96 @@ export default function Stacks() {
   };
   return (
     <>
-      <div className="mb-14">
-        <div className="flex items-center">
-          <h3
+      <motion.div
+        ref={sectionRef}
+        initial={{ opacity: 0, y: -20 }} // 초기 상태
+        animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, y: -20 }} // 섹션이 60% 이상 보일 때 애니메이션
+        transition={{ duration: 0.5 }}
+        className="mb-14"
+      >
+        <motion.div
+          className="flex items-center"
+          initial={{ opacity: 0 }} // 초기 상태 (위에서 내려오면서 보이도록 설정)
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }} // isInView가 true일 때 애니메이션
+          transition={{ duration: 0.5, delay: 0 }} // 딜레이 없이 제목이 먼저
+        >
+          <motion.h3
             className={`inline font-bold text-foreground/80 text-xl pl-12 tracking-tighter md:text-2xl `}
           >
             Stacks
-          </h3>
+          </motion.h3>
           <button
             onClick={handleButtonClick}
             className=" text-[10px] font-medium text-background/90 bg-foreground/80 ml-3 px-2 py-1  rounded-2xl md:text-xs sm:text-xs hover:bg-foreground/70 hover:text-background/80"
           >
             {isMoreSkills ? "Core Stack >" : "More Stack >"}
           </button>
-        </div>
+        </motion.div>
 
         {isLoading ? (
           <StackSeleton />
         ) : (
-          <motion.div
-            style={{ opacity: yRange }}
-            className="flex flex-row justify-between "
-          >
-            {/* 왼쪽 스킬 */}
-            <motion.div
-              style={{ x: xLeft }}
-              initial={{ x: -100, opacity: 0 }} // 초기 상태
-              animate={{ x: 0, opacity: 1 }} // 애니메이션 상태
-              transition={{ duration: 0.5 }}
-              className="flex flex-col w-60 m-10"
-            >
-              <strong className="pl-2 mt-4">
-                {isMoreSkills ? "# Utils" : "# Front-end"}
-              </strong>
-              <div className="flex flex-wrap  mt-5">
-                {(isMoreSkills ? stacksText.utils : stacksText.front).map(
-                  (stack, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-center items-center font-medium p-2 m-2 text-center text-xs rounded-lg bg-foreground/10 text-foreground/75"
-                    >
-                      {stack.name}
-                    </div>
-                  )
-                )}
+          <motion.div transition={{ duration: 0.5, delay: 0.4 }}>
+            <motion.div className="flex flex-row justify-between ">
+              {/* 왼쪽 스킬 */}
+              <motion.div
+                initial={{ opacity: 0 }} // 초기 상태
+                animate={{ opacity: 1 }} // 애니메이션 상태
+                transition={{ duration: 0.5 }}
+                className="flex flex-col w-60 m-10"
+              >
+                <strong className="pl-2 mt-4">
+                  {isMoreSkills ? "# Utils" : "# Front-end"}
+                </strong>
+                <div className="flex flex-wrap  mt-5">
+                  {(isMoreSkills ? stacksText.utils : stacksText.front).map(
+                    (stack, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-center items-center font-medium p-2 m-2 text-center text-xs rounded-lg bg-foreground/10 text-foreground/75"
+                      >
+                        {stack.name}
+                      </div>
+                    )
+                  )}
+                </div>
+              </motion.div>
+              {/* 이미지 */}
+              <div className="hidden items-center  md:flex my-4 ">
+                <Image
+                  className="w-60 cursor-pointer rounded-full hover:bg-foreground/5"
+                  onClick={handleButtonClick}
+                  src={isMoreSkills ? StackMoreIcon : StackCoreIcon}
+                  alt=""
+                ></Image>
               </div>
-            </motion.div>
-            {/* 이미지 */}
-            <div className="hidden items-center  md:flex my-4 ">
-              <Image
-                className="w-60 cursor-pointer rounded-full hover:bg-foreground/5"
-                onClick={handleButtonClick}
-                src={isMoreSkills ? StackMoreIcon : StackCoreIcon}
-                alt=""
-              ></Image>
-            </div>
-            {/* 오른쪽 스킬 */}
-            <motion.div
-              style={{ x: xRight }}
-              initial={{ x: 100, opacity: 0 }} // 초기 상태
-              animate={{ x: 0, opacity: 1 }} // 애니메이션 상태
-              transition={{ duration: 0.5 }}
-              className="flex flex-col w-60 m-10 "
-            >
-              <strong className="pl-2 mt-4">
-                {isMoreSkills ? "# DB" : "# Back-end"}
-              </strong>
-              <div className="flex flex-wrap  mt-5">
-                {(isMoreSkills ? stacksText.dbSkills : stacksText.back).map(
-                  (stack, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-center items-center font-medium p-2 m-2 text-center text-xs rounded-lg bg-foreground/10 text-foreground/75"
-                    >
-                      {stack.name}
-                    </div>
-                  )
-                )}
-              </div>
+              {/* 오른쪽 스킬 */}
+              <motion.div
+                initial={{ opacity: 0 }} // 초기 상태
+                animate={{ opacity: 1 }} // 애니메이션 상태
+                transition={{ duration: 0.5 }}
+                className="flex flex-col w-60 m-10 "
+              >
+                <strong className="pl-2 mt-4">
+                  {isMoreSkills ? "# DB" : "# Back-end"}
+                </strong>
+                <div className="flex flex-wrap  mt-5">
+                  {(isMoreSkills ? stacksText.dbSkills : stacksText.back).map(
+                    (stack, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-center items-center font-medium p-2 m-2 text-center text-xs rounded-lg bg-foreground/10 text-foreground/75"
+                      >
+                        {stack.name}
+                      </div>
+                    )
+                  )}
+                </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
-      </div>
+      </motion.div>
 
       {isLoading ? (
         ""
