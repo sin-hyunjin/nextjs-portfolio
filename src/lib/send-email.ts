@@ -34,7 +34,7 @@ function validateFormData(formData: FormData) {
 
   // 필수 필드 확인
   if (!name) {
-    throw new Error("네임를 입력주시면 감사하겠습니다!");
+    throw new Error("이름을 입력주시면 감사하겠습니다!");
   }
   if (!email) {
     throw new Error("메세지를 입력주시면 감사하겠습니다!");

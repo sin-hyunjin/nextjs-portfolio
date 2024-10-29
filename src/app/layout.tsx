@@ -3,7 +3,7 @@ import "@/assets/css/globals.css";
 import "normalize.css"; // reset.css
 import { poppins } from "@/assets/fonts/fonts";
 import { ThemeProvider } from "@/stores/providers/theme-provider";
-import { MainNav } from "@/components/(overview)";
+import { MainNav, StarsCanvas } from "@/components/overview";
 
 export const metadata: Metadata = {
   title: "HJ Portfolio",
@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body
-        className={`${poppins.className} w-full flex h-screen flex-col justify-center`}
+        className={`${poppins.className} w-full flex h-screen flex-col justify-center `}
         suppressHydrationWarning
       >
         <ThemeProvider

@@ -3,14 +3,15 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import useScrollManager from "@/hooks/use-scroll-manager";
-import { GithubIcon } from "@/assets/icons/(overview)";
+import { GithubIcon } from "@/assets/icons/overview";
 import {
   About,
   Constant,
   Home,
   LoadingScreen,
   Project,
-} from "@/components/(overview)/index";
+} from "@/components/overview/index";
+import Hero from "@/components/overview/hero";
 
 // Main Page 컴포넌트
 export default function Page() {
@@ -32,8 +33,10 @@ function MainContent() {
   return (
     <>
       <main className="w-full flex h-screen flex-col">
-        <div className="w-full flex-1 mt-10 max-w-5xl mx-auto ">
-          <Home />
+        <div className="w-full flex-1 mt-10  mx-auto ">
+          <Hero />
+          {/* <Home /> */}
+
           <About />
           <Project />
           <Constant />
