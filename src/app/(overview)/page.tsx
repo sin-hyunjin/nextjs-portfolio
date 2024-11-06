@@ -32,11 +32,11 @@ function MainContent() {
   useScrollManager();
   return (
     <>
-      <main className="w-full flex h-screen flex-col">
-        <div className="w-full flex-1 mt-10  mx-auto ">
+      <main className="w-full flex h-screen flex-col ">
+        <div className="relative w-full flex-1  mx-auto ">
           <Hero />
           {/* <Home /> */}
-
+          {/* <div className="absolute inset-x-0 top-[58rem] h-20 bg-gradient-to-t from-[#000000] to-transparent backdrop-blur-2xl z-10" /> */}
           <About />
           <Project />
           <Constant />

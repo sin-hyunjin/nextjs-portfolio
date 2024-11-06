@@ -16,11 +16,11 @@ export default function Introduce() {
       initial={{ opacity: 0 }} // 초기 상태
       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0 }} // 섹션이 60% 이상 보일 때 애니메이션
       transition={{ duration: 0.5 }}
-      className="shadow-foreground/10 p-12 mb-16 rounded-lg md:mb-24"
+      className="shadow-foreground/10 p-12 mb-16 rounded-lg md:mb-24 "
     >
       {/* Introduce 제목 */}
       <motion.h1
-        className="inline font-bold text-foreground/80 text-xl tracking-tighter md:text-2xl"
+        className="inline font-bold text-foreground/80 text-xl tracking-tighter md:text-2xl "
         initial={{ opacity: 0, y: -30 }} // 초기 상태 (위에서 내려오면서 보이도록 설정)
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }} // isInView가 true일 때 애니메이션
         transition={{ duration: 0.5, delay: 0 }} // 딜레이 없이 제목이 먼저 나타남
@@ -30,7 +30,7 @@ export default function Introduce() {
 
       {/* 내용 */}
       <motion.div
-        className="flex flex-col md:flex-row items-center my-10"
+        className="flex flex-col md:flex-row items-center my-10 "
         initial={{ opacity: 0 }} // 초기 상태
         animate={isInView ? { opacity: 1 } : { opacity: 0 }} // 0.3초 뒤에 내용이 보이도록 설정
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -47,7 +47,7 @@ export default function Introduce() {
         </motion.div>
 
         {/* 설명 목록 */}
-        <motion.div className="mt-5 md:mt-3 md:ml-10">
+        <motion.div className="mt-5 md:mt-3 md:ml-10 z-10">
           <ol className="space-y-4 text-xs text-foreground/75 leading-relaxed md:text-sm">
             <li className="flex">
               <span className="border-b pb-4">

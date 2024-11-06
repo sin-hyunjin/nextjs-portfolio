@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView, Variants } from "framer-motion";
 import { ShuffleIcon } from "lucide-react";
 
 interface Props {
@@ -23,6 +23,18 @@ const SlotMachine = ({ textData }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const textArr = Array(ARRAY_REPEAT).fill(textData).flat();
   const lastIndex = textArr.length - 1 - count;
+
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.5 });
+  const wasInView = useRef(isInView); // 이전 `isInView` 상태를 추적
+
+  // 요소가 보일 때마다 handleClick 실행
+  useEffect(() => {
+    if (isInView && !wasInView.current) {
+      handleClick();
+    }
+    wasInView.current = isInView;
+  }, [isInView]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,7 +78,7 @@ const SlotMachine = ({ textData }: Props) => {
           return (
             i === currentIndex && (
               <motion.p
-                className="min-w-[10rem] text-xl p-1 mr-2 rounded-md bg-foreground/5 verflow-hidden font-thin md:text-3xl md:min-w-[36rem] sm:text-2xl sm:min-w-[14rem]"
+                className="min-w-[10rem] text-xl p-1 mr-2 rounded-md bg-foreground/5 overflow-hidden font-thin md:text-3xl md:min-w-[36rem] sm:text-2xl sm:min-w-[14rem]"
                 key={text}
                 custom={{ isLast }}
                 variants={variants}
@@ -86,7 +98,8 @@ const SlotMachine = ({ textData }: Props) => {
       </AnimatePresence>
 
       <motion.button
-        className="z-10"
+        ref={sectionRef}
+        className="z-20"
         onClick={handleClick}
         whileTap={{ scale: 0.9, scaleY: 1 }}
         whileHover={{ scaleY: -1 }}

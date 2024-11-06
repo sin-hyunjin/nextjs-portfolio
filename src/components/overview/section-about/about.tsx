@@ -7,31 +7,46 @@ import Stacks from "@/components/overview/section-about/stacks";
 import Introduce from "@/components/overview/section-about/introduce";
 import { SectionTitle } from "../section-title";
 
+import HeadInCludesCanvas from "@/components/overview/canvas/floating-fox-canvas";
+import { StarsCanvas } from "../canvas/stars-canvas";
+
 export default function About() {
   return (
     <section
       id="about"
-      className="flex flex-col px-10  justify-around min-h-screen scroll-mt-16 "
+      className="relative flex flex-col px-10 justify-around h-screen scroll-mt-16 bg-cover bg-center bg-[#060816] "
+      style={{
+        backgroundImage: `linear-gradient(to top, rgba(20, 28, 48, 0.2), rgba(0, 0, 0, 1)), url('./2.png')`,
+      }}
     >
-      {/* 제목 */}
-      <div className="flex justify-end border-t-2 border-t-foreground/10">
-        <SectionTitle
-          title="ABOUT."
-          description="  저는 이런 생각을 가지고 있습니다."
-        />
-      </div>
-      {/* introduce */}
-      <Introduce />
+      {/* <StarsCanvas /> */}
 
-      {/* stacks */}
-      <Stacks></Stacks>
+      <div className="w-full h-full mx-auto max-w-5xl ">
+        {/* 제목 */}
+        <div className="relative ">
+          <div className="flex justify-start flex-col ">
+            <SectionTitle
+              title="ABOUT."
+              description="  저는 이런 생각을 가지고 있습니다."
+            />
+          </div>
+          <div className="absolute h-[30rem]  ">
+            <HeadInCludesCanvas />
+          </div>
+        </div>
+        {/* introduce */}
+        {/* <Introduce /> */}
 
-      <div className="flex justify-center items-center mt-20 mb-12">
-        {" "}
-        <Link href="#project" onClick={(e) => scrollToSection(e, "#project")}>
+        {/* stacks */}
+        {/* <Stacks></Stacks> */}
+
+        {/* <div className="flex justify-center items-center mt-20 mb-12">
           {" "}
-          <ArrowBigDownDash className="arrow" />
-        </Link>
+          <Link href="#project" onClick={(e) => scrollToSection(e, "#project")}>
+            {" "}
+            <ArrowBigDownDash className="arrow" />
+          </Link>
+        </div> */}
       </div>
     </section>
   );
