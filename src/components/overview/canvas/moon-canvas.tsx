@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber"; // useFrame import
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "./canvas-loader";
@@ -11,11 +11,20 @@ interface ComputersProps {
 }
 
 const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
+  const computer = useGLTF("./the_moon/scene.gltf");
+
+  // 회전 상태를 애니메이션 처리합니다.
+  useFrame(() => {
+    if (computer.scene) {
+      computer.scene.rotation.y -= 0.001;
+      computer.scene.rotation.x -= 0.001;
+      computer.scene.rotation.z += 0.0001;
+    }
+  });
 
   return (
     <mesh>
-      <hemisphereLight intensity={5} groundColor="black" />
+      <hemisphereLight intensity={3.3} groundColor="black" />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
@@ -27,21 +36,21 @@ const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isVerySmall ? 0.4 : isMobile ? 0.5 : 0.6} // 매우 작은 화면일 때 적용
+        scale={isVerySmall ? 1.5 : isMobile ? 2 : 2.5} // 매우 작은 화면일 때 적용
         position={
           isVerySmall
-            ? [0, -2.5, -0.55]
+            ? [-12, -2.6, -7.5]
             : isMobile
-            ? [0, -2.4, -0.6]
-            : [-14, -1.3, -6.5]
+            ? [-11, -2.2, -8]
+            : [-10, -1.8, -8.5]
         }
-        rotation={[-0.0, -0.2, -0.01]}
+        rotation={[-0.0, -0.2, -0.13]}
       />
     </mesh>
   );
 };
 
-const ComputersCanvas = () => {
+const MoonCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isVerySmall, setIsVerySmall] = useState(false); // 추가
 
@@ -74,8 +83,8 @@ const ComputersCanvas = () => {
 
   return (
     <Canvas
-      className="absolute -top-1/2 z-[1]"
-      frameloop="demand"
+      className="absolute -top-1/2 z-10   border"
+      frameloop="always"
       shadows
       dpr={[1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
@@ -95,4 +104,4 @@ const ComputersCanvas = () => {
   );
 };
 
-export default ComputersCanvas;
+export default MoonCanvas;

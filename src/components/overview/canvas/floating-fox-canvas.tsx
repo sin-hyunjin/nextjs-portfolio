@@ -1,18 +1,34 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "./canvas-loader";
-
+import { AnimationMixer } from "three";
+import * as THREE from "three"; // 여기에서 THREE를 import
 // `isMobile` prop의 타입을 명시해줍니다.
 interface ComputersProps {
   isMobile: boolean;
   isVerySmall: boolean; // 추가
 }
 
-const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
+const FloatingFox = ({ isMobile, isVerySmall }: ComputersProps) => {
+  const floatingFox = useGLTF("./floating_fox/scene.gltf");
+  const mixer = useRef(new AnimationMixer(floatingFox.scene));
+  // 애니메이션 클립을 추가합니다.
+  useEffect(() => {
+    if (floatingFox.animations && floatingFox.animations.length) {
+      floatingFox.animations.forEach((clip) => {
+        const action = mixer.current.clipAction(clip);
+        action.setLoop(THREE.LoopRepeat, Infinity); // 루프를 설정
+        action.play(); // 애니메이션 재생
+      });
+    }
+  }, [floatingFox]);
 
+  // 매 프레임마다 애니메이션 업데이트
+  useFrame((state, delta) => {
+    mixer.current.update(delta); // 애니메이션 업데이트
+  });
   return (
     <mesh>
       <hemisphereLight intensity={5} groundColor="black" />
@@ -26,22 +42,18 @@ const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
       />
       <pointLight intensity={1} />
       <primitive
-        object={computer.scene}
-        scale={isVerySmall ? 0.4 : isMobile ? 0.5 : 0.6} // 매우 작은 화면일 때 적용
+        object={floatingFox.scene}
+        scale={isVerySmall ? 1.6 : isMobile ? 1.8 : 2} // 매우 작은 화면일 때 적용
         position={
-          isVerySmall
-            ? [0, -2.5, -0.55]
-            : isMobile
-            ? [0, -2.4, -0.6]
-            : [-14, -1.3, -6.5]
+          isVerySmall ? [0, -1, 3] : isMobile ? [0, -1, 2.5] : [0, -0.4, 2]
         }
-        rotation={[-0.0, -0.2, -0.01]}
+        rotation={[-0.0, 2, -0.1]}
       />
     </mesh>
   );
 };
 
-const ComputersCanvas = () => {
+const FloatingFoxCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isVerySmall, setIsVerySmall] = useState(false); // 추가
 
@@ -74,11 +86,11 @@ const ComputersCanvas = () => {
 
   return (
     <Canvas
-      className="absolute -top-1/2 z-[1]"
-      frameloop="demand"
+      className="absolute -top-1/4"
+      frameloop="always"
       shadows
       dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
+      camera={{ position: [40, 3, 5], fov: 30 }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
@@ -87,7 +99,7 @@ const ComputersCanvas = () => {
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-        <Computers isMobile={isMobile} isVerySmall={isVerySmall} />
+        <FloatingFox isMobile={isMobile} isVerySmall={isVerySmall} />
       </Suspense>
 
       <Preload all />
@@ -95,4 +107,4 @@ const ComputersCanvas = () => {
   );
 };
 
-export default ComputersCanvas;
+export default FloatingFoxCanvas;
