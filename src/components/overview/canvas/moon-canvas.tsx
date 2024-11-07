@@ -36,13 +36,13 @@ const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isVerySmall ? 1.5 : isMobile ? 2 : 2.5} // 매우 작은 화면일 때 적용
+        scale={isVerySmall ? 2.3 : isMobile ? 2.9 : 3.6} // 매우 작은 화면일 때 적용
         position={
           isVerySmall
-            ? [-12, -2.6, -7.5]
+            ? [-13, -3.0, -8.5]
             : isMobile
-            ? [-11, -2.2, -8]
-            : [-10, -1.8, -8.5]
+            ? [-12, -2.8, -9]
+            : [-11, -2.4, -10.5]
         }
         rotation={[-0.0, -0.2, -0.13]}
       />
@@ -83,7 +83,7 @@ const MoonCanvas = () => {
 
   return (
     <Canvas
-      className="absolute -top-1/2 z-10   border"
+      className="absolute -top-1/2 z-10 "
       frameloop="always"
       shadows
       dpr={[1, 2]}

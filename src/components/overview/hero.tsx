@@ -25,7 +25,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative scroll-mt-14 bg-cover bg-center h-[48rem] md:h-[60rem] sm:h-[55rem]   "
+      className="relative scroll-mt-14 bg-cover bg-center h-screen   "
       style={{
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('./4.png')`,
       }}
