@@ -78,7 +78,7 @@ const SlotMachine = ({ textData }: Props) => {
           return (
             i === currentIndex && (
               <motion.p
-                className="min-w-[10rem] text-xl p-1 mr-2 rounded-md bg-foreground/5 overflow-hidden font-thin md:text-3xl md:min-w-[36rem] sm:text-2xl sm:min-w-[14rem]"
+                className="min-w-[10rem] text-xl p-1 mr-2 rounded-md bg-foreground/5 overflow-hidden font-thin md:text-3xl md:min-w-[36rem] sm:text-2xl sm:min-w-[14rem]  "
                 key={text}
                 custom={{ isLast }}
                 variants={variants}

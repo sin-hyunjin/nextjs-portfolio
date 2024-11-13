@@ -7,11 +7,10 @@ import { GithubIcon } from "@/assets/icons/overview";
 import {
   About,
   Constant,
-  Home,
   LoadingScreen,
   Project,
 } from "@/components/overview/index";
-import Hero from "@/components/overview/hero";
+import Hero from "@/components/overview/section-home/hero";
 
 // Main Page 컴포넌트
 export default function Page() {
@@ -33,10 +32,8 @@ function MainContent() {
   return (
     <>
       <main className="w-full flex h-screen flex-col ">
-        <div className="relative w-full flex-1  mx-auto ">
+        <div className="relative w-full flex-1  overflow-x-hidden">
           <Hero />
-          {/* <Home /> */}
-          {/* <div className="absolute inset-x-0 top-[58rem] h-20 bg-gradient-to-t from-[#000000] to-transparent backdrop-blur-2xl z-10" /> */}
           <About />
           <Project />
           <Constant />

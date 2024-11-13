@@ -1,15 +1,14 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import ComputersCanvas from "./canvas/computers-canvas";
-import SlotMachine from "./section-home/slot-machine";
-import { fadeInUp, fadeInRight, fadeInDelayed } from "@/lib/motion";
-import { StarsCanvas } from "./canvas/stars-canvas";
+import SlotMachine from "./slot-machine";
+import { StarsCanvas } from "../canvas/stars-canvas";
 import { scrollToSection } from "@/lib/utils";
 import Link from "next/link";
-import { ArrowBigDownDash } from "lucide-react";
+import { ArrowBigDownDash, Copyright } from "lucide-react";
 import { useRef } from "react";
-import MoonCanvas from "./canvas/moon-canvas";
+import MoonCanvas from "../canvas/moon-canvas";
+import WaveText from "./wave-text";
 
 const textData = [
   "사용자 중심의 웹 개발을 배우고 성장하는 중인",
@@ -27,40 +26,53 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative scroll-mt-14 bg-cover bg-center h-screen   "
+      className="relative scroll-mt-14 bg-cover bg-center h-screen "
       style={{
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('./4.png')`,
       }}
     >
-      <div className="absolute w-full h-2/4">
+      {/* 별 배경 Canvas */}
+      <div className="absolute w-full h-3/5">
         <StarsCanvas />
       </div>
-      <div className=" w-full h-full mx-auto max-w-5xl ">
-        <div
-          className={`inset-0 sm:px-16 px-6 flex flex-row items-start gap-5`}
-        >
-          <div className="flex flex-col justify-center items-center mt-32">
-            <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
-            <div className="w-1 sm:h-80 h-56 violet-gradient" />
-          </div>
 
+      <div className="w-full h-full  mx-auto max-w-5xl ">
+        <div
+          className="absolute w-full h-[27%] md:h-[20%]  flex flex-col justify-center px-3.5 md:px-12 sm:px-[3.35rem] mt-24 xs:mt-24 sm:mt-28 md:mt-32 leading-tight uppercase text-4xl xs:text-5xl sm:text-7xl md:text-8xl stroke-text 
+       "
+        >
+          <WaveText text="front end" delay={0.05} className="ml-1" />
+          <WaveText
+            text="developer"
+            delay={0.05}
+            className="mt-2 ml-1 xs:ml-9 sm:ml-28 md:ml-32 "
+          />
+        </div>
+
+        <div
+          className={`h-full inset-0 sm:px-16 px-6 flex flex-col justify-center items-start gap-5`}
+        >
+          <div className="mt-14 sm:mt-5 md:mt-10 border border-white/40 -ml-1  text-xs p-1 uppercase">
+            portfolio
+          </div>
+          {/* 애니메이션 원 */}
+          <div className="flex items-start">
+            {[5, 4, 3, 2, 1].map((size, index) => (
+              <div
+                key={index}
+                className={`w-${size} h-${size} mt-${index} rounded-full bg-white shadow-glow`}
+              />
+            ))}
+          </div>
+          {/* 슬로건 및 소개 텍스트 */}
           <motion.div
-            className="mt-10 z-20"
+            className="flex flex-col items-center z-20 "
             ref={sectionRef}
             initial={{ opacity: 0 }} // 초기 상태
             animate={isInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
           >
-            <motion.div
-              {...fadeInUp}
-              className={`text-clamp-lg font-black text-white md:text-6xl sm:text-5xl xs:text-4xl text-[40px] md:leading-[98px] mt-20 md:mt-16 whitespace-nowrap 
-              `}
-            >
-              FRONT-END
-              <span className="text-[#915EFF] "> DEV</span>
-            </motion.div>
-
             <div
-              className={`text-clamp-sm text-[#e4e0fd] font-medium md:text-2xl sm:text-xl  xs:text-base text-[16px] md:leading-[40px] mt-10 md:mt-3 text-white-100 
+              className={`text-clamp-sm text-[#e4e0fd] font-medium text-[14px] xs:text-base  sm:text-xl   md:text-2xl md:leading-[40px] mt-1  text-white-100 
                 `}
             >
               <motion.p
@@ -70,7 +82,7 @@ const Hero = () => {
                 }
                 transition={{ delay: 0.2, duration: 1 }}
               >
-                안녕하세요
+                새로운 것을 창조하고
               </motion.p>
               <motion.div
                 initial={{ opacity: 0 }} // 초기 상태
@@ -96,21 +108,29 @@ const Hero = () => {
               </motion.p>
             </div>
           </motion.div>
+          {/* 저작권 표시 */}
+          <div className="absolute flex bottom-10 right-10  mr-5 ">
+            <div className="inline-block h-4">
+              <Copyright size={14} strokeWidth={0.75} />
+            </div>
+            <span className="text-xs text-white/70">2024</span>
+          </div>
         </div>
-        <div className=" absolute inset-0  ml-[-20%]">
+        {/* 달 배경 Canvas */}
+        <div className=" absolute inset-0 ml-[-20%] cursor-pointer">
           <MoonCanvas />
         </div>
-        {/* <ComputersCanvas /> */}
       </div>
 
+      {/* about 이동 화살표 */}
       <motion.div
         ref={arrowRef}
         initial={{ opacity: 0 }} // 초기 상태
         animate={isArrowInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 0.2, duration: 1 }}
-        className="flex justify-center items-center -mt-16 mb-12 text-violet-100"
+        className="flex justify-center items-center -mt-16 mb-12 text-violet-100 "
       >
-        <div ref={arrowRef}>
+        <div ref={arrowRef} className="z-30">
           <Link href="#project" onClick={(e) => scrollToSection(e, "#about")}>
             <ArrowBigDownDash className="arrow" />
           </Link>

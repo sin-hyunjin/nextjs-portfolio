@@ -36,15 +36,15 @@ const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isVerySmall ? 2.3 : isMobile ? 2.9 : 3.6} // 매우 작은 화면일 때 적용
+        scale={isVerySmall ? 1.1 : isMobile ? 1.3 : 1.6} // 매우 작은 화면일 때 적용
         position={
           isVerySmall
-            ? [-13, -3.0, -8.5]
+            ? [0, 2.0, -0]
             : isMobile
-            ? [-12, -2.8, -9]
-            : [-11, -2.4, -10.5]
+            ? [0, 2.1, -0.5]
+            : [0, 2.1, -0.1]
         }
-        rotation={[-0.0, -0.2, -0.13]}
+        rotation={[0.0, -0.2, -0.13]}
       />
     </mesh>
   );
@@ -55,39 +55,38 @@ const MoonCanvas = () => {
   const [isVerySmall, setIsVerySmall] = useState(false); // 추가
 
   useEffect(() => {
-    // `max-width: 640px` 미디어 쿼리
-    const mediaQueryMobile = window.matchMedia("(max-width: 770px)");
-    // `max-width: 380px` 미디어 쿼리 추가
-    const mediaQueryVerySmall = window.matchMedia("(max-width: 640px)");
+    const mediaQuery768 = window.matchMedia("(max-width: 768px)");
+
+    const mediaQueryVerySmall = window.matchMedia("(max-width: 630px)");
 
     // `isMobile` 상태의 초기 값을 설정
-    setIsMobile(mediaQueryMobile.matches);
+    setIsMobile(mediaQuery768.matches);
     setIsVerySmall(mediaQueryVerySmall.matches); // `isVerySmall` 상태 설정
 
     // 미디어 쿼리 변경을 처리하는 콜백 함수 정의
     const handleMediaQueryChange = () => {
-      setIsMobile(mediaQueryMobile.matches);
+      setIsMobile(mediaQuery768.matches);
       setIsVerySmall(mediaQueryVerySmall.matches); // `isVerySmall` 상태 설정
     };
 
     // 미디어 쿼리 변경 시 콜백 함수를 리스너로 추가
-    mediaQueryMobile.addEventListener("change", handleMediaQueryChange);
+    mediaQuery768.addEventListener("change", handleMediaQueryChange);
     mediaQueryVerySmall.addEventListener("change", handleMediaQueryChange);
 
     // 컴포넌트가 언마운트될 때 리스너 제거
     return () => {
-      mediaQueryMobile.removeEventListener("change", handleMediaQueryChange);
+      mediaQuery768.removeEventListener("change", handleMediaQueryChange);
       mediaQueryVerySmall.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
 
   return (
     <Canvas
-      className="absolute -top-1/2 z-10 "
+      className="absolute z-10 ml-[10rem] xs:ml-[12rem] md:ml-[31rem] sm:ml-[21rem] "
       frameloop="always"
       shadows
       dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
+      camera={{ position: [15, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>

@@ -14,7 +14,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative flex flex-col px-10 justify-around h-screen scroll-mt-16 bg-cover bg-center bg-[#060816] "
+      className="relative flex flex-col px-10  min-h-screen scroll-mt-16 bg-cover bg-center "
       style={{
         backgroundImage: `linear-gradient(to top, rgba(20, 28, 48, 0.2), rgba(0, 0, 0, 1)), url('./2.png')`,
       }}
