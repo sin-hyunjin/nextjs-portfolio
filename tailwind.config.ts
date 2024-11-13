@@ -16,11 +16,19 @@ const config: Config = {
       center: true,
       padding: "2rem",
       screens: {
-        sm: "480px",
-        md: "768px",
+        xs: "320px",
+        sm: "630px",
+        md: "770px",
         lg: "976px",
         xl: "1440px",
       },
+    },
+    screens: {
+      xs: "320px",
+      sm: "630px",
+      md: "770px",
+      lg: "976px",
+      xl: "1440px",
     },
     extend: {
       fontSize: {
@@ -28,6 +36,7 @@ const config: Config = {
       },
       boxShadow: {
         "b-shadow": "0 0px 3px var(--shadow)",
+        glow: "0 0 10px 5px rgba(255, 255, 255, 0.6)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],

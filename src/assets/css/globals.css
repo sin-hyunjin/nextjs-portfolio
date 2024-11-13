@@ -100,6 +100,39 @@ body {
   animation: bounce 1s infinite;
 }
 
+.text-clamp-lg {
+  font-size: clamp(2rem, 5vw + 1rem, 3.75rem); /* 반응형 제목 크기 */
+  transition: font-size 0.4s ease;
+}
+
+.leading-clamp-lg {
+  line-height: clamp(2.5rem, 6vw + 1rem, 6rem); /* 제목 줄 간격 */
+}
+
+.text-clamp-sm {
+  font-size: clamp(1rem, 3vw + 0.5rem, 1.1rem); /* 반응형 본문 크기 */
+  transition: font-size 0.4s ease;
+}
+
+.leading-clamp-sm {
+  line-height: clamp(1.5rem, 4vw + 0.5rem, 2.5rem); /* 본문 줄 간격 */
+}
+
+.stroke-text {
+  -webkit-text-stroke: 0.15px #ffffffae;
+  color: transparent;
+  /* animation: stroke-animation 2s infinite alternate; */
+}
+
+@keyframes stroke-animation {
+  from {
+    -webkit-text-stroke-color: #fff;
+  }
+  to {
+    -webkit-text-stroke-color: #c1c1c15e;
+  }
+}
+
 .black-gradient {
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -113,7 +146,15 @@ body {
     #000000
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
+.white-gradient {
+  background: #ffffff; /* White color */
+  background: linear-gradient(-90deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
 .violet-gradient {
   background: #804dee;
   background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
@@ -282,4 +323,20 @@ body {
       -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
+}
+
+@keyframes waveColor {
+  0%,
+  100% {
+    -webkit-text-stroke-color: #fff;
+  }
+  50% {
+    -webkit-text-stroke-color: #ffffff2a;
+    color: #ffffff11;
+  }
+}
+
+.wave-animation {
+  display: inline-block;
+  animation: waveColor 5s ease-in-out infinite;
 }
