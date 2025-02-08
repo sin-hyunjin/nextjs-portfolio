@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import SlotMachine from "./slot-machine";
 import { StarsCanvas } from "../canvas/stars-canvas";
-import { scrollToSection } from "@/lib/utils";
+import { cn, scrollToSection } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowBigDownDash, Copyright } from "lucide-react";
 import { useRef } from "react";
@@ -20,7 +20,7 @@ const Hero = () => {
   const sectionRef = useRef(null);
   const arrowRef = useRef(null);
 
-  const isInView = useInView(sectionRef, { amount: 0.2 });
+  const isInView = useInView(sectionRef, { amount: 0.1 });
   const isArrowInView = useInView(arrowRef, { amount: 1 });
 
   return (
@@ -28,31 +28,31 @@ const Hero = () => {
       id="home"
       className="relative scroll-mt-14 bg-cover bg-center h-screen "
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('./4.png')`,
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('/background-image/4.png')`,
       }}
     >
       {/* 별 배경 Canvas */}
-      <div className="absolute w-full h-3/5">
+      <div className="absolute w-full h-3/6">
         <StarsCanvas />
       </div>
 
       <div className="w-full h-full  mx-auto max-w-5xl ">
         <div
-          className="absolute w-full h-[27%] md:h-[20%]  flex flex-col justify-center px-3.5 md:px-12 sm:px-[3.35rem] mt-24 xs:mt-24 sm:mt-28 md:mt-32 leading-tight uppercase text-4xl xs:text-5xl sm:text-7xl md:text-8xl stroke-text 
+          className="absolute w-full h-[27%] md:h-[20%]  flex flex-col justify-center px-3.5 md:px-8 sm:px-[2rem] mt-16 xs:mt-20 sm:mt-28 md:mt-32 leading-tight uppercase text-4xl xs:text-5xl sm:text-7xl md:text-8xl stroke-text 
        "
         >
           <WaveText text="front end" delay={0.05} className="ml-1" />
           <WaveText
             text="developer"
-            delay={0.05}
-            className="mt-2 ml-1 xs:ml-9 sm:ml-28 md:ml-32 "
+            delay={0.1}
+            className="mt-2 ml-1 xs:ml-9 sm:ml-28 md:ml-32 z-20"
           />
         </div>
 
         <div
-          className={`h-full inset-0 sm:px-16 px-6 flex flex-col justify-center items-start gap-5`}
+          className={`h-full inset-0 sm:px-10 px-5 flex flex-col justify-center items-start gap-5`}
         >
-          <div className="mt-14 sm:mt-5 md:mt-10 border border-white/40 -ml-1  text-xs p-1 uppercase">
+          <div className="mt-20  sm:mt-5 md:mt-10 border border-white/40   text-xs p-1 uppercase">
             portfolio
           </div>
           {/* 애니메이션 원 */}
@@ -60,7 +60,11 @@ const Hero = () => {
             {[5, 4, 3, 2, 1].map((size, index) => (
               <div
                 key={index}
-                className={`w-${size} h-${size} mt-${index} rounded-full bg-white shadow-glow`}
+                className={cn(
+                  `rounded-full bg-white shadow-glow`,
+                  `w-${size} h-${size}`,
+                  `mt-${index}`
+                )}
               />
             ))}
           </div>
@@ -88,7 +92,7 @@ const Hero = () => {
                 initial={{ opacity: 0 }} // 초기 상태
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: 0.4, duration: 1 }}
-                className="my-3  text-ellipsis transition-all"
+                className="my-3 text-ellipsis transition-all"
               >
                 <SlotMachine textData={textData} />
               </motion.div>

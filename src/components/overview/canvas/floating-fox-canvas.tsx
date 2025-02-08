@@ -1,19 +1,28 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-
 import CanvasLoader from "./canvas-loader";
 import { AnimationMixer } from "three";
-import * as THREE from "three"; // 여기에서 THREE를 import
-// `isMobile` prop의 타입을 명시해줍니다.
+import * as THREE from "three";
+
 interface ComputersProps {
-  isMobile: boolean;
-  isVerySmall: boolean; // 추가
+  isScreenXS: boolean; // 320px
+  isScreenSM: boolean; // 630px
+  isScreenMD: boolean; // 770px
+  isScreenLG: boolean; // 976px
+  isScreenXL: boolean; // 1440px
 }
 
-const FloatingFox = ({ isMobile, isVerySmall }: ComputersProps) => {
+const FloatingFox = ({
+  isScreenXS,
+  isScreenSM,
+  isScreenMD,
+  isScreenLG,
+  isScreenXL,
+}: ComputersProps) => {
   const floatingFox = useGLTF("./floating_fox/scene.gltf");
   const mixer = useRef(new AnimationMixer(floatingFox.scene));
+
   // 애니메이션 클립을 추가합니다.
   useEffect(() => {
     if (floatingFox.animations && floatingFox.animations.length) {
@@ -29,6 +38,7 @@ const FloatingFox = ({ isMobile, isVerySmall }: ComputersProps) => {
   useFrame((state, delta) => {
     mixer.current.update(delta); // 애니메이션 업데이트
   });
+
   return (
     <mesh>
       <hemisphereLight intensity={5} groundColor="black" />
@@ -41,12 +51,35 @@ const FloatingFox = ({ isMobile, isVerySmall }: ComputersProps) => {
         shadow-mapSize={1024}
       />
       <pointLight intensity={1} />
+
       <primitive
         object={floatingFox.scene}
-        scale={isVerySmall ? 1.6 : isMobile ? 1.8 : 2} // 매우 작은 화면일 때 적용
+        scale={
+          isScreenXS
+            ? 1.3
+            : isScreenSM
+            ? 1.6
+            : isScreenMD
+            ? 2.0
+            : isScreenLG
+            ? 2.2
+            : isScreenXL
+            ? 2.3
+            : 2.2
+        } // 화면 크기별로 scale 조정
         position={
-          isVerySmall ? [0, -1, 3] : isMobile ? [0, -1, 2.5] : [0, -0.4, 2]
-        }
+          isScreenXS
+            ? [-1, -5.4, 0.5]
+            : isScreenSM
+            ? [0, -4, 1]
+            : isScreenMD
+            ? [0, -2, 1.5]
+            : isScreenLG
+            ? [0, -0.4, 1]
+            : isScreenXL
+            ? [0, 0, 1]
+            : [0, 0, 1]
+        } // 화면 크기별로 position 조정
         rotation={[-0.0, 2, -0.1]}
       />
     </mesh>
@@ -54,39 +87,55 @@ const FloatingFox = ({ isMobile, isVerySmall }: ComputersProps) => {
 };
 
 const FloatingFoxCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isVerySmall, setIsVerySmall] = useState(false); // 추가
+  const [isScreenXS, setIsScreenXS] = useState(false);
+  const [isScreenSM, setIsScreenSM] = useState(false);
+  const [isScreenMD, setIsScreenMD] = useState(false);
+  const [isScreenLG, setIsScreenLG] = useState(false);
+  const [isScreenXL, setIsScreenXL] = useState(false);
 
   useEffect(() => {
-    // `max-width: 640px` 미디어 쿼리
-    const mediaQueryMobile = window.matchMedia("(max-width: 770px)");
-    // `max-width: 380px` 미디어 쿼리 추가
-    const mediaQueryVerySmall = window.matchMedia("(max-width: 640px)");
+    const mediaQueryScreenXS = window.matchMedia("(max-width: 320px)");
+    const mediaQueryScreenSM = window.matchMedia("(max-width: 630px)");
+    const mediaQueryScreenMD = window.matchMedia("(max-width: 768px)");
+    const mediaQueryScreenLG = window.matchMedia("(max-width: 976px)");
+    const mediaQueryScreenXL = window.matchMedia("(max-width: 1440px)");
 
-    // `isMobile` 상태의 초기 값을 설정
-    setIsMobile(mediaQueryMobile.matches);
-    setIsVerySmall(mediaQueryVerySmall.matches); // `isVerySmall` 상태 설정
+    // 초기 값 설정
+    setIsScreenXS(mediaQueryScreenXS.matches);
+    setIsScreenSM(mediaQueryScreenSM.matches);
+    setIsScreenMD(mediaQueryScreenMD.matches);
+    setIsScreenLG(mediaQueryScreenLG.matches);
+    setIsScreenXL(mediaQueryScreenXL.matches);
 
     // 미디어 쿼리 변경을 처리하는 콜백 함수 정의
     const handleMediaQueryChange = () => {
-      setIsMobile(mediaQueryMobile.matches);
-      setIsVerySmall(mediaQueryVerySmall.matches); // `isVerySmall` 상태 설정
+      setIsScreenXS(mediaQueryScreenXS.matches);
+      setIsScreenSM(mediaQueryScreenSM.matches);
+      setIsScreenMD(mediaQueryScreenMD.matches);
+      setIsScreenLG(mediaQueryScreenLG.matches);
+      setIsScreenXL(mediaQueryScreenXL.matches);
     };
 
     // 미디어 쿼리 변경 시 콜백 함수를 리스너로 추가
-    mediaQueryMobile.addEventListener("change", handleMediaQueryChange);
-    mediaQueryVerySmall.addEventListener("change", handleMediaQueryChange);
+    mediaQueryScreenXS.addEventListener("change", handleMediaQueryChange);
+    mediaQueryScreenSM.addEventListener("change", handleMediaQueryChange);
+    mediaQueryScreenMD.addEventListener("change", handleMediaQueryChange);
+    mediaQueryScreenLG.addEventListener("change", handleMediaQueryChange);
+    mediaQueryScreenXL.addEventListener("change", handleMediaQueryChange);
 
     // 컴포넌트가 언마운트될 때 리스너 제거
     return () => {
-      mediaQueryMobile.removeEventListener("change", handleMediaQueryChange);
-      mediaQueryVerySmall.removeEventListener("change", handleMediaQueryChange);
+      mediaQueryScreenXS.removeEventListener("change", handleMediaQueryChange);
+      mediaQueryScreenSM.removeEventListener("change", handleMediaQueryChange);
+      mediaQueryScreenMD.removeEventListener("change", handleMediaQueryChange);
+      mediaQueryScreenLG.removeEventListener("change", handleMediaQueryChange);
+      mediaQueryScreenXL.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
 
   return (
     <Canvas
-      className="absolute -top-1/4"
+      className="absolute -top-24 xs:-top-28  z-[1] cursor-pointer "
       frameloop="always"
       shadows
       dpr={[1, 2]}
@@ -99,7 +148,13 @@ const FloatingFoxCanvas = () => {
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-        <FloatingFox isMobile={isMobile} isVerySmall={isVerySmall} />
+        <FloatingFox
+          isScreenXS={isScreenXS}
+          isScreenSM={isScreenSM}
+          isScreenMD={isScreenMD}
+          isScreenLG={isScreenLG}
+          isScreenXL={isScreenXL}
+        />
       </Suspense>
 
       <Preload all />

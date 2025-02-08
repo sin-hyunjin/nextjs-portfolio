@@ -62,12 +62,12 @@ export default function MainNav() {
         {/* <ScrollMotion /> */}
         <div className="flex justify-between max-w-5xl mx-auto ">
           {/* 제목왼쪽 */}
-          <div className="flex justify-start items-center text-lg font-semibold px-10">
+          <div className="flex justify-start items-center text-lg font-semibold sm:px-10 px-5">
             <Link
               href={links[0].href}
               onClick={(e) => handleLinkClick(links[0].href, e)}
             >
-              <span> HJ. Portfolio</span>
+              <span className=""> HJ. Portfolio</span>
             </Link>
           </div>
 

@@ -340,3 +340,7 @@ body {
   display: inline-block;
   animation: waveColor 5s ease-in-out infinite;
 }
+
+.three-d-character {
+  pointer-events: auto; /* 3D 캐릭터가 마우스 이벤트를 무시 */
+}

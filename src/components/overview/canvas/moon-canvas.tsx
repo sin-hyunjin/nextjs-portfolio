@@ -1,16 +1,25 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber"; // useFrame import
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "./canvas-loader";
 
-// `isMobile` prop의 타입을 명시해줍니다.
+// 새 타입 정의
 interface ComputersProps {
-  isMobile: boolean;
-  isVerySmall: boolean; // 추가
+  isScreenXS: boolean; // 320px 이하
+  isScreenSM: boolean; // 630px 이하
+  isScreenMD: boolean; // 770px 이하
+  isScreenLG: boolean; // 976px 이하
+  isScreenXL: boolean; // 1440px 이하
 }
 
-const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
+const Computers = ({
+  isScreenXS,
+  isScreenSM,
+  isScreenMD,
+  isScreenLG,
+  isScreenXL,
+}: ComputersProps) => {
   const computer = useGLTF("./the_moon/scene.gltf");
 
   // 회전 상태를 애니메이션 처리합니다.
@@ -36,13 +45,31 @@ const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isVerySmall ? 1.1 : isMobile ? 1.3 : 1.6} // 매우 작은 화면일 때 적용
+        scale={
+          isScreenXS
+            ? 0.75
+            : isScreenSM
+            ? 0.85
+            : isScreenMD
+            ? 1
+            : isScreenLG
+            ? 1.3
+            : isScreenXL
+            ? 1.3
+            : 1.3
+        }
         position={
-          isVerySmall
-            ? [0, 2.0, -0]
-            : isMobile
-            ? [0, 2.1, -0.5]
-            : [0, 2.1, -0.1]
+          isScreenXS
+            ? [0, 2.2, 0]
+            : isScreenSM
+            ? [0, 2.2, -0.3]
+            : isScreenMD
+            ? [0, 2.1, -0.3]
+            : isScreenLG
+            ? [0, 2.1, -0.1]
+            : isScreenXL
+            ? [0, 2.1, -0.1]
+            : [0, 2.2, -0.9]
         }
         rotation={[0.0, -0.2, -0.13]}
       />
@@ -51,32 +78,41 @@ const Computers = ({ isMobile, isVerySmall }: ComputersProps) => {
 };
 
 const MoonCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isVerySmall, setIsVerySmall] = useState(false); // 추가
+  const [isScreenXS, setIsScreenXS] = useState(false);
+  const [isScreenSM, setIsScreenSM] = useState(false);
+  const [isScreenMD, setIsScreenMD] = useState(false);
+  const [isScreenLG, setIsScreenLG] = useState(false);
+  const [isScreenXL, setIsScreenXL] = useState(false);
 
   useEffect(() => {
-    const mediaQuery768 = window.matchMedia("(max-width: 768px)");
+    const mediaQueryXS = window.matchMedia("(max-width: 320px)");
+    const mediaQuerySM = window.matchMedia("(max-width: 630px)");
+    const mediaQueryMD = window.matchMedia("(max-width: 770px)");
+    const mediaQueryLG = window.matchMedia("(max-width: 976px)");
+    const mediaQueryXL = window.matchMedia("(max-width: 1440px)");
 
-    const mediaQueryVerySmall = window.matchMedia("(max-width: 630px)");
-
-    // `isMobile` 상태의 초기 값을 설정
-    setIsMobile(mediaQuery768.matches);
-    setIsVerySmall(mediaQueryVerySmall.matches); // `isVerySmall` 상태 설정
-
-    // 미디어 쿼리 변경을 처리하는 콜백 함수 정의
-    const handleMediaQueryChange = () => {
-      setIsMobile(mediaQuery768.matches);
-      setIsVerySmall(mediaQueryVerySmall.matches); // `isVerySmall` 상태 설정
+    const setResponsiveStates = () => {
+      setIsScreenXS(mediaQueryXS.matches);
+      setIsScreenSM(mediaQuerySM.matches);
+      setIsScreenMD(mediaQueryMD.matches);
+      setIsScreenLG(mediaQueryLG.matches);
+      setIsScreenXL(mediaQueryXL.matches);
     };
 
-    // 미디어 쿼리 변경 시 콜백 함수를 리스너로 추가
-    mediaQuery768.addEventListener("change", handleMediaQueryChange);
-    mediaQueryVerySmall.addEventListener("change", handleMediaQueryChange);
+    setResponsiveStates(); // 초기 값 설정
 
-    // 컴포넌트가 언마운트될 때 리스너 제거
+    mediaQueryXS.addEventListener("change", setResponsiveStates);
+    mediaQuerySM.addEventListener("change", setResponsiveStates);
+    mediaQueryMD.addEventListener("change", setResponsiveStates);
+    mediaQueryLG.addEventListener("change", setResponsiveStates);
+    mediaQueryXL.addEventListener("change", setResponsiveStates);
+
     return () => {
-      mediaQuery768.removeEventListener("change", handleMediaQueryChange);
-      mediaQueryVerySmall.removeEventListener("change", handleMediaQueryChange);
+      mediaQueryXS.removeEventListener("change", setResponsiveStates);
+      mediaQuerySM.removeEventListener("change", setResponsiveStates);
+      mediaQueryMD.removeEventListener("change", setResponsiveStates);
+      mediaQueryLG.removeEventListener("change", setResponsiveStates);
+      mediaQueryXL.removeEventListener("change", setResponsiveStates);
     };
   }, []);
 
@@ -91,11 +127,20 @@ const MoonCanvas = () => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
-          enableZoom={false}
+          enableZoom={false} // 줌 활성화
+          enableRotate={true} // 회전 활성화
+          rotateSpeed={1.0} // 회전 속도
+          zoomSpeed={0.8} // 줌 속도
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-        <Computers isMobile={isMobile} isVerySmall={isVerySmall} />
+        <Computers
+          isScreenXS={isScreenXS}
+          isScreenSM={isScreenSM}
+          isScreenMD={isScreenMD}
+          isScreenLG={isScreenLG}
+          isScreenXL={isScreenXL}
+        />
       </Suspense>
 
       <Preload all />

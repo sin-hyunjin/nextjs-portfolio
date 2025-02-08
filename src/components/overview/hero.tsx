@@ -40,27 +40,30 @@ const Hero = () => {
           className={`inset-0 sm:px-16 px-6 flex flex-row items-start gap-5`}
         >
           <div className="flex flex-col justify-center items-center mt-32">
-            <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
-            <div className="w-1 sm:h-80 h-56 violet-gradient" />
+            <div className="w-5 h-5 rounded-full bg-white shadow-glow" />
+            <div className="w-1 sm:h-80 h-56 white-gradient " />
           </div>
 
           <motion.div
-            className="mt-10 z-20"
+            className="flex mt-10 z-20"
             ref={sectionRef}
             initial={{ opacity: 0 }} // 초기 상태
             animate={isInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
           >
             <motion.div
               {...fadeInUp}
-              className={`text-clamp-lg font-black text-white md:text-6xl sm:text-5xl xs:text-4xl text-[40px] md:leading-[98px] mt-20 md:mt-16 whitespace-nowrap 
+              className={`text-clamp-lg font-black text-white md:text-6xl sm:text-5xl xs:text-4xl text-[40px] md:leading-[98px]  whitespace-nowrap 
               `}
             >
-              FRONT-END
-              <span className="text-[#915EFF] "> DEV</span>
+              <div className="absolute stroke-text mt-16 leading-tight uppercase md:text-6xl sm:text-5xl xs:text-4xl">
+                <span className="ml-1">front</span>
+                <span className="ml-1">end</span>
+                <div className="mt-2">developer</div>
+              </div>
             </motion.div>
 
             <div
-              className={`text-clamp-sm text-[#e4e0fd] font-medium md:text-2xl sm:text-xl  xs:text-base text-[16px] md:leading-[40px] mt-10 md:mt-3 text-white-100 
+              className={` text-clamp-sm text-[#e4e0fd] font-medium md:text-2xl sm:text-xl  xs:text-base text-[16px] md:leading-[40px] mt-10 md:mt-3 text-white-100 
                 `}
             >
               <motion.p

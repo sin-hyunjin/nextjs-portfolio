@@ -15,7 +15,7 @@ const StarBackground = (props: StarBackgroundProps) => {
   const ref = useRef<ThreePoints>(null!);
 
   const sphere = useMemo(() => {
-    const positions = random.inSphere(new Float32Array(5000), { radius: 1.2 });
+    const positions = random.inSphere(new Float32Array(1000), { radius: 1.2 });
     // NaN 값이 있는지 확인
     for (let i = 0; i < positions.length; i++) {
       if (isNaN(positions[i])) {
