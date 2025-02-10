@@ -26,7 +26,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative scroll-mt-14 bg-cover bg-center h-screen "
+      className="relative scroll-mt-14 bg-cover bg-center h-screen font-inter"
       style={{
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('/background-image/4.png')`,
       }}
@@ -37,10 +37,7 @@ const Hero = () => {
       </div>
 
       <div className="w-full h-full  mx-auto max-w-5xl ">
-        <div
-          className="absolute w-full h-[27%] md:h-[20%]  flex flex-col justify-center px-3.5 md:px-8 sm:px-[2rem] mt-16 xs:mt-20 sm:mt-28 md:mt-32 leading-tight uppercase text-4xl xs:text-5xl sm:text-7xl md:text-8xl stroke-text 
-       "
-        >
+        <div className="absolute w-full h-[27%] md:h-[20%]  flex flex-col justify-center px-3.5 md:px-8 sm:px-[2rem] mt-16 xs:mt-20 sm:mt-28 md:mt-32 leading-tight uppercase text-4xl xs:text-5xl sm:text-7xl md:text-8xl stroke-text text-white">
           <WaveText text="front end" delay={0.05} className="ml-1" />
           <WaveText
             text="developer"
@@ -52,7 +49,7 @@ const Hero = () => {
         <div
           className={`h-full inset-0 sm:px-10 px-5 flex flex-col justify-center items-start gap-5`}
         >
-          <div className="mt-20  sm:mt-5 md:mt-10 border border-white/40   text-xs p-1 uppercase">
+          <div className="mt-20  sm:mt-5 md:mt-10 border border-white/40   text-xs p-1 uppercase text-gray-300">
             portfolio
           </div>
           {/* 애니메이션 원 */}
@@ -76,7 +73,7 @@ const Hero = () => {
             animate={isInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
           >
             <div
-              className={`text-clamp-sm text-[#e4e0fd] font-medium text-[14px] xs:text-base  sm:text-xl   md:text-2xl md:leading-[40px] mt-1  text-white-100 
+              className={`text-clamp-sm  font-medium text-[14px] xs:text-base  sm:text-xl   md:text-2xl md:leading-[40px] mt-1  text-gray-300 
                 `}
             >
               <motion.p
@@ -92,7 +89,7 @@ const Hero = () => {
                 initial={{ opacity: 0 }} // 초기 상태
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: 0.4, duration: 1 }}
-                className="my-3 text-ellipsis transition-all"
+                className="my-3 text-ellipsis transition-all text-white"
               >
                 <SlotMachine textData={textData} />
               </motion.div>
@@ -117,7 +114,7 @@ const Hero = () => {
             <div className="inline-block h-4">
               <Copyright size={14} strokeWidth={0.75} />
             </div>
-            <span className="text-xs text-white/70">2024</span>
+            <span className="text-xs text-gray-400">2024</span>
           </div>
         </div>
         {/* 달 배경 Canvas */}
@@ -126,7 +123,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* about 이동 화살표 */}
       <motion.div
         ref={arrowRef}
         initial={{ opacity: 0 }} // 초기 상태
@@ -135,7 +131,10 @@ const Hero = () => {
         className="flex justify-center items-center -mt-16 mb-12 text-violet-100 "
       >
         <div ref={arrowRef} className="z-30">
-          <Link href="#project" onClick={(e) => scrollToSection(e, "#about")}>
+          <Link
+            href="#project"
+            onClick={(e) => scrollToSection(e, "#introduce")}
+          >
             <ArrowBigDownDash className="arrow" />
           </Link>
         </div>

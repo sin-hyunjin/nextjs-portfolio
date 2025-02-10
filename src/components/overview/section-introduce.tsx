@@ -1,80 +1,108 @@
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { User, Code, Briefcase, Mail } from "lucide-react";
 
 export const SectionIntro = () => {
-  const ref = useRef(null); // 감지할 DOM 요소
-  const inView = useInView(ref, { amount: 0.1 }); // 요소가 보이면 애니메이션 트리거
+  const ref = useRef(null);
+  const inView = useInView(ref, { amount: 0.1, once: false });
 
-  // 박스 애니메이션 정의
+  const sections = [
+    {
+      number: "01",
+      title: "ABOUT",
+      description:
+        "프론트엔드 개발자로서의 저의 이야기와 성장 과정을 소개합니다.",
+      icon: <User className="w-8 h-8" />,
+    },
+    {
+      number: "02",
+      title: "SKILLS",
+      description:
+        "React, TypeScript, Next.js 등 웹 개발에 사용하는 기술 스택을 소개합니다.",
+      icon: <Code className="w-8 h-8" />,
+    },
+    {
+      number: "03",
+      title: "PROJECTS",
+      description:
+        "지금까지 진행했던 프로젝트들과 그 과정에서 배운 점들을 공유합니다.",
+      icon: <Briefcase className="w-8 h-8" />,
+      isHighlight: true,
+    },
+    {
+      number: "04",
+      title: "CONTACT",
+      description: "함께 일하고 싶으시다면 언제든 연락주세요.",
+      icon: <Mail className="w-8 h-8" />,
+      isHighlight: false,
+    },
+  ];
+
   const boxVariant = {
     hidden: (i: number) => ({
-      x: `-${23 * i}vw`, // 모든 박스는 왼쪽에서 시작
       opacity: 0,
-    }), // 초기 상태: 투명, 왼쪽 이동
+      y: 50,
+    }),
     visible: (i: number) => ({
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
-        delay: i * 0.75, // 각 박스의 딜레이 설정
+        delay: i * 0.2,
         duration: 0.5,
       },
     }),
   };
 
-  const sections = [
-    {
-      title: "Home",
-      subtitle: "포트폴리오 시작",
-      description: "프론트엔드 개발자로서의 여정을 시작합니다.",
-    },
-    {
-      title: "About",
-      subtitle: "자기소개",
-      description: "저의 경력과 기술을 소개합니다.",
-    },
-    {
-      title: "Skills",
-      subtitle: "기술 스택",
-      description: "React, TypeScript, Three.js 등 다양한 기술을 다룹니다.",
-    },
-    {
-      title: "Contact",
-      subtitle: "연락하기",
-      description: "프로젝트 협업이나 문의 사항이 있으시면 연락주세요.",
-    },
-  ];
-
   return (
-    <div className="flex justify-center min-h-80 bg-black mx-auto z-10">
-      <div
-        className="w-[92vw] h-[50vh] relative flex max-w-5xl mx-0 xl:px-10"
-        ref={ref}
-      >
-        {/* 전체 크기 박스 */}
-        <div
-          className="w-full h-full flex bg-[rgb(8,9,9)]"
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('/background-image/4.png')`,
-          }}
-        >
+    <div id="introduce" className="flex justify-center  bg-black/90 py-20">
+      <div className="w-full max-w-5xl px-4 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6" ref={ref}>
           {sections.map((section, index) => (
             <motion.div
               key={index}
               className={cn(
-                `flex flex-col justify-center items-center w-[23vw] h-full bg-black/70 p-8 text-white border border-white/20  rounded-lg`
+                "flex flex-col p-8 h-[300px] rounded-sm backdrop-blur-sm border border-white/10",
+                section.isHighlight
+                  ? "bg-gradient-to-br from-orange-500/90 to-orange-600/90 text-white"
+                  : "bg-black/40 text-white hover:bg-black/50 transition-colors"
               )}
-              style={{
-                zIndex: 4 - index,
-              }}
               variants={boxVariant}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
               custom={index}
             >
-              <h2 className="text-lg font-semibold">{section.title}</h2>
-              <h3 className="text-md">{section.subtitle}</h3>
-              <p className="text-xs mt-1">{section.description}</p>
+              <div className="text-xs mb-8 font-mono text-white/60"></div>
+              <div
+                className={cn(
+                  "mb-6",
+                  section.isHighlight ? "text-white" : "text-white/80"
+                )}
+              >
+                {section.icon}
+              </div>
+              <h2
+                className={cn(
+                  "text-xl font-mono tracking-wider mb-4",
+                  section.isHighlight ? "text-white" : "text-white/90"
+                )}
+              >
+                {section.title}_
+              </h2>
+              <p
+                className={cn(
+                  "text-sm leading-relaxed font-light",
+                  section.isHighlight ? "text-white/90" : "text-white/60",
+                  section.description ? "mb-4" : "mb-0"
+                )}
+              >
+                {section.description}
+              </p>
+              {section.isHighlight && (
+                <button className="mt-auto py-2 px-4 bg-black/80 text-white text-sm font-mono tracking-wide hover:bg-black transition-all border border-white/10">
+                  VIEW MORE
+                </button>
+              )}
             </motion.div>
           ))}
         </div>

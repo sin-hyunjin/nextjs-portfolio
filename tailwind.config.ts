@@ -83,6 +83,9 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        orange: {
+          500: "#FF6B00", // 하이라이트 섹션의 오렌지 색상
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
