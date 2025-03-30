@@ -10,17 +10,26 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [{ pattern: /w-\d+/ }, { pattern: /h-\d+/ }, { pattern: /mt-\d+/ }],
   prefix: "",
   theme: {
     container: {
       center: true,
       padding: "2rem",
       screens: {
-        sm: "480px",
-        md: "768px",
+        xs: "320px",
+        sm: "630px",
+        md: "770px",
         lg: "976px",
         xl: "1440px",
       },
+    },
+    screens: {
+      xs: "320px",
+      sm: "630px",
+      md: "770px",
+      lg: "976px",
+      xl: "1440px",
     },
     extend: {
       fontSize: {
@@ -28,6 +37,7 @@ const config: Config = {
       },
       boxShadow: {
         "b-shadow": "0 0px 3px var(--shadow)",
+        glow: "0 0 10px 5px rgba(255, 255, 255, 0.6)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
@@ -72,6 +82,9 @@ const config: Config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        orange: {
+          500: "#FF6B00", // 하이라이트 섹션의 오렌지 색상
         },
       },
       borderRadius: {

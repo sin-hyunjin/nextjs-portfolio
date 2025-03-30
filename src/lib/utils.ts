@@ -10,8 +10,12 @@ export const scrollToSection = (
   sectionId: string
 ) => {
   event.preventDefault();
-  const element = document.querySelector(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  const section = document.querySelector(sectionId);
+  if (section) {
+    if (sectionId === "#introduce") {
+      section.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 };
